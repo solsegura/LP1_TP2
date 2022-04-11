@@ -18,5 +18,31 @@
     <ClCompile Include="LP1_TP2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Aeropuertos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pasajeros.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vuelos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Aviones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Pasajeros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Aeropuertos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vuelos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Aviones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
