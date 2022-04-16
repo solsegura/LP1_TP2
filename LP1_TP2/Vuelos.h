@@ -28,8 +28,9 @@ public:
 	~cVuelo();
 	cPasajero* DatosPasajero(string DNI);
 	void AgregarPasajero(cPasajero* pasajero);
-	void CambiarPasajero(cPasajero* pasajero);
+	void CambiarPasajero(cPasajero* pasajero_nuevo, cPasajero* pasajero_viejo);
 	void EliminarPasajero(cPasajero* pasajero);
+	void SetearAvion();
 };
 
 class cListaVuelos {

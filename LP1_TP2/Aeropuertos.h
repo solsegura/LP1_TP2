@@ -28,6 +28,7 @@ public:
 	/// permiso de aterrizar según la disponibilidad del hangar.
 	/// </summary>
 	/// <param name="avion"></param>
-	void DarPermiso(cAvion* avion);
+	void DarPermisoDespegue(cAvion* avion);  //podria hacerlo en un solo metodo DarPermiso chequeando el estado del avion
+	void DarPermisoAterrizar(cAvion* avion);
 
 };

@@ -34,11 +34,29 @@ string cPasajero::getNVuelo()
 	return this->Nvuelo;
 }
 
+string cPasajero::getDNI()
+{
+	return this->DNI;
+}
+
+void cListaPasajeros::ModificarPasajero(cPasajero* pasajero, int indice)
+{
+	this->Vector_Pasajeros[indice] = pasajero;
+}
+
 int cListaPasajeros::Buscar(cPasajero* pasajero)
 {
-	int indice = 0;
 	for (int i = 0; i < this->cant_act; i++) {
 		if (this->Vector_Pasajeros[i] == pasajero) {
+			return i;				//si encuentro al pasajero en la lista, retorno la posicion
+		}
+	}
+	return -1;//si no encuentro, retorna -1
+}
+
+int cListaPasajeros:: BuscarDNI(string dni) {
+	for (int i = 0; i < this->cant_act; i++) {
+		if (this->Vector_Pasajeros[i]->getDNI() == dni) {
 			return i;				//si encuentro al pasajero en la lista, retorno la posicion
 		}
 	}

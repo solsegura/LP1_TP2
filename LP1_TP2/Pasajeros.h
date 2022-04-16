@@ -34,6 +34,8 @@ public:
 	void AgregarEquipaje(cEquipaje* valija_nueva);
 	cEquipaje* EliminarEquipaje(cEquipaje* valija);
 	string getNVuelo();
+	string getDNI();
+	cListaEquipaje* getListavalijas();
 };
 
 class cListaPasajeros {
@@ -44,7 +46,13 @@ public:
 	cListaPasajeros(int T);
 	~cListaPasajeros();
 	void AgregarPasajero(cPasajero* pasajero);
-	void QuitarPasajero(cPasajero* pasajero);
+	/// <summary>
+	/// Copia la nueva informacion del pasajero en el indice que le pasamos por parametro
+	/// </summary>
+	/// <param name="pasajero"></param>
+	/// <param name="indice"></param>
+	void ModificarPasajero(cPasajero* pasajero, int indice);
+	//void QuitarPasajero(cPasajero* pasajero);
 	void EliminarPasajero(cPasajero* pasajero);
 	/// <summary>
 	/// Retorna la posicion en la que esta el pasajero en la lista o -1 si no esta
@@ -58,4 +66,8 @@ public:
 	/// <param name="vuelo"></param>
 	/// <returns></returns>
 	cListaPasajeros* FiltrarLista(string vuelo);  
+	int BuscarDNI(string dni);
+
+	unsigned int getCant();
+	cPasajero* getPasajero(int indice);
 };

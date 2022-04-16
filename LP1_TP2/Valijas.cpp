@@ -53,3 +53,17 @@ cEquipaje* cListaEquipaje::EliminarValija(cEquipaje* valija)
 		}
 	}
 }
+
+int cListaEquipaje::SumarPeso()
+{
+	int peso = 0;
+	for (int i = 0; i < this->cant_act; i++) {
+		peso += this->Vector_Equipaje[i]->GetPeso();
+	}
+	return peso;
+}
+
+int cListaEquipaje::getCant()
+{
+	return this->cant_act;
+}

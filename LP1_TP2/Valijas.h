@@ -18,6 +18,7 @@ public:
 	cEquipaje(string desc, int peso);
 	///Destructor de Equipaje
 	~cEquipaje(); 
+	int GetPeso();
 
 };
 
@@ -43,4 +44,9 @@ public:
 	/// </summary>
 	/// <param name="valija"></param>
 	cEquipaje* EliminarValija(cEquipaje* valija);
+
+	int SumarPeso();
+	cEquipaje* GetValija(int indice);
+
+	int getCant();
 };
