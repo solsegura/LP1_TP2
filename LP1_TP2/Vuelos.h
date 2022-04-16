@@ -31,6 +31,7 @@ public:
 	void CambiarPasajero(cPasajero* pasajero_nuevo, cPasajero* pasajero_viejo);
 	void EliminarPasajero(cPasajero* pasajero);
 	void SetearAvion();
+	void SetEstado(estado Estado);
 };
 
 class cListaVuelos {
