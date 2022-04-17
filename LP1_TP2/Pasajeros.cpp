@@ -44,6 +44,10 @@ void cListaPasajeros::ModificarPasajero(cPasajero* pasajero, int indice)
 	this->Vector_Pasajeros[indice] = pasajero;
 }
 
+void cListaPasajeros::EliminarPasajero(cPasajero* pasajero)
+{
+}
+
 int cListaPasajeros::Buscar(cPasajero* pasajero)
 {
 	for (int i = 0; i < this->cant_act; i++) {
