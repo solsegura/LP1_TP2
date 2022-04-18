@@ -11,7 +11,7 @@ hay que considerar el peso de los 4 integrantes de la tripulación (no llevan
 equipaje).
 */
 
-cAvion::cAvion(int id, int cantmax)
+cAvion::cAvion(string id, int cantmax)
 {
 	this->ID = id;
 	this->CantPasajerosMax = cantmax;

@@ -39,6 +39,10 @@ void cListaEquipaje::AgregarValija(cEquipaje* valija_nueva)
 		this->Vector_Equipaje[cant_act] = valija_nueva;
 		cant_act++;
 	}
+	if (this->SumarPeso() > 25) {   //chequeamos que al agregar la valija no se pase del peso maximo
+		this->EliminarValija(valija_nueva);
+		cout << "No se puede agregar la valija porque sobrepasa el total de 25kg" << endl;
+	}
 }
 
 cEquipaje* cListaEquipaje::EliminarValija(cEquipaje* valija)

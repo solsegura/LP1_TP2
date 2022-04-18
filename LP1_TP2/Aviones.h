@@ -13,7 +13,7 @@ pedir permiso y recibir permiso tanto para aterrizar como para despegar*/
 enum estado{ volando, en_tierra};
 
 class cAvion {
-	int ID;
+	string ID;
 	int CantPasajerosMax;
 	int CantPasajerosAct;
 	int PesoMax;
@@ -23,7 +23,7 @@ class cAvion {
 
 
 public:
-	cAvion(int id, int cantmax);
+	cAvion(string id, int cantmax);
 	~cAvion();
 	void Despegar();
 	void Aterrizar();

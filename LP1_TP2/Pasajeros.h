@@ -25,7 +25,7 @@ class cPasajero {
 	cListaEquipaje* ListaValijas;
 
 public:
-	cPasajero(string dni, string nombre, string fecha, string nvuelo, int asiento, cListaEquipaje* listavalijas);
+	cPasajero(string dni, string nombre, string fecha, string nvuelo, int asiento, int cant_valijas);
 	~cPasajero();
 	/// <summary>
 	/// Llama  al metodo agregar valija de la clase cListaEquipaje para agregar una valija a la losta del pasajero

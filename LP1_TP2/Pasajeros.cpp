@@ -4,14 +4,14 @@
 #include "Vuelos.h"
 #include "Valijas.h"
 
-cPasajero::cPasajero(string dni, string nombre, string fecha, string nvuelo, int asiento, cListaEquipaje* listavalijas)
+cPasajero::cPasajero(string dni, string nombre, string fecha, string nvuelo, int asiento, int cant_valijas)
 {
 	this->DNI = dni;
 	this->Nombre = nombre;
 	this->Fecha = fecha;
 	this->Nvuelo = nvuelo;
 	this->Asiento = asiento;
-	this->ListaValijas = listavalijas;
+	this->ListaValijas = new cListaEquipaje(cant_valijas);
 }
 
 cPasajero::~cPasajero()
