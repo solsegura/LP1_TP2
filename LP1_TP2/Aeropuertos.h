@@ -14,7 +14,7 @@ class cListaVuelos;
 
 class cAeropuerto {
 	string ID;
-	int capacidad;
+	int Capacidad;
 	cListaAviones* Lista_aviones;
 	cListaVuelos* Lista_vuelos;
 

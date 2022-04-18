@@ -39,7 +39,7 @@ string cPasajero::getDNI()
 	return this->DNI;
 }
 
-void cListaPasajeros::ModificarPasajero(cPasajero* pasajero, int indice)
+void cListaPasajeros::ModificarPasajero(cPasajero* pasajero, int indice) //cambiar
 {
 	this->Vector_Pasajeros[indice] = pasajero;
 }
@@ -69,9 +69,9 @@ int cListaPasajeros:: BuscarDNI(string dni) {
 
 cListaPasajeros* cListaPasajeros::FiltrarLista(string vuelo)
 {
-	cListaPasajeros* filtro = new cListaPasajeros(this->cant_act);
+	cListaPasajeros* filtro = new cListaPasajeros(this->cant_act); //filtro es la lista nueva 
 	for (int i = 0; i < this->cant_act; i++)
 		if (this->Vector_Pasajeros[i]->getNVuelo() == vuelo)
-			filtro->AgregarPasajero(Vector_Pasajeros[i]);
+			filtro->AgregarPasajero(Vector_Pasajeros[i]); //agregar a filtro cada pasajero que tenga el vuelo = vuelo
 	return filtro;
 }

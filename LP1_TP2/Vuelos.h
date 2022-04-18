@@ -10,7 +10,7 @@ class cAvion;
 class cAeropuerto;
 class cPasajero;
 
-enum estado { en_tiempo, retrasado, abordando, en_vuelo };
+enum estado { on_time, delayed, boarding, flying};
 enum part_arribo { partida, arribo };
 
 class cVuelo {
@@ -21,7 +21,7 @@ class cVuelo {
 	string FechaHora_Llegada;
 	string Destino;
 	part_arribo PoA;
-	cListaPasajeros* Pasajeros;
+	cListaPasajeros* Pasajeros; //filtro
 
 public:
 	cVuelo(cAvion* avion, string fechasalida, string fechallegada, string destino, part_arribo poa, cListaPasajeros pasajeros);

@@ -15,6 +15,8 @@ cAvion::cAvion(int id, int cantmax)
 {
 	this->ID = id;
 	this->CantPasajerosMax = cantmax;
+	this->CantPasajerosAct = 0;
+	this->PesoAct=0;
 	this->PesoMax = this->CantPasajerosMax * 75 + this->CantPasajerosMax * 25 + 4 * 75; //calculamos el pesomax del avion sumando el peso promedio de las personas y el maximo peso posible del equipaje
 	this->Permiso = false;
 	this->Estado = en_tierra;
@@ -41,7 +43,7 @@ void cAvion::Despegar()
 void cAvion::Aterrizar()
 {
 	if (this->Permiso == true) {
-		this->Estado = volando;
+		this->Estado = en_tierra;
 		this->Permiso = false;
 	}
 	else
@@ -58,11 +60,17 @@ void cAvion::RecibirPermiso(bool permiso)
 		this->Permiso = permiso;
 		this->Aterrizar();
 	}
-		
-	
 }
 
 bool cAvion::ChequearCargaMaxima()
+{
+	if (this->PesoAct <= this->PesoMax)
+		return true;
+	else
+		return false;
+}
+
+bool cAvion::ChequearCapacidadMaxima()
 {
 	if (this->CantPasajerosAct <= CantPasajerosMax)
 		return true;

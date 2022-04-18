@@ -3,6 +3,18 @@
 #include "Aeropuertos.h"
 #include "Vuelos.h"
 
+cAeropuerto::cAeropuerto(string id, int capacidad, cListaAviones* aviones, cListaVuelos* vuelos)
+{
+	this->ID = id;
+	this->Capacidad = capacidad;
+	this->Lista_aviones = aviones;
+	this->Lista_vuelos = vuelos;
+}
+
+cAeropuerto::~cAeropuerto()
+{
+}
+
 void cAeropuerto::DarPermisoDespegue(cAvion* avion)
 {
 		cAvion* aux = this->Lista_aviones->QuitarAvion(avion); //chequeamos que el avion este en el aeropuerto
@@ -16,7 +28,7 @@ void cAeropuerto::DarPermisoDespegue(cAvion* avion)
 
 void cAeropuerto::DarPermisoAterrizar(cAvion* avion)
 {
-	if (this->Lista_aviones->getCant() < this->Lista_aviones->getTam()) { //reviso que haya lugar en el hangar
+	if (this->Lista_aviones->getCant() < this->Capacidad) { //reviso que haya lugar en el hangar
 		avion->RecibirPermiso(true);  //asignamos true en el permiso de ese avion
 		this->Lista_aviones->AgregarAvion(avion);
 	}

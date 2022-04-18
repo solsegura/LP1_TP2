@@ -43,7 +43,7 @@ class cListaPasajeros {
 	unsigned int tam, cant_act;
 
 public:
-	cListaPasajeros(int T);
+	cListaPasajeros(int T); //tam max
 	~cListaPasajeros();
 	void AgregarPasajero(cPasajero* pasajero);
 	/// <summary>

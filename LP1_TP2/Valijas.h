@@ -31,7 +31,7 @@ public:
 	/// Constructor de lista Equipaje, inicializa la cantidad actual de la lista en 0, y recibe T para el tamanio de la lista
 	/// </summary>
 	/// <param name="T"></param>
-	cListaEquipaje(int T);
+	cListaEquipaje(int T); //max
 	///Destructor de Lista Equipaje
 	~cListaEquipaje();
 	/// <summary>
