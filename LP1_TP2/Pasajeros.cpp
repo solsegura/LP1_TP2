@@ -4,7 +4,7 @@
 #include "Vuelos.h"
 #include "Valijas.h"
 
-cPasajero::cPasajero(string dni, string nombre, string fecha, string nvuelo, int asiento, int cant_valijas)
+cPasajero::cPasajero(string dni, string nombre, string fecha, int nvuelo, int asiento, int cant_valijas)
 {
 	this->DNI = dni;
 	this->Nombre = nombre;
@@ -29,7 +29,7 @@ cEquipaje* cPasajero::EliminarEquipaje(cEquipaje* valija)
 	return aux;
 }
 
-string cPasajero::getNVuelo()
+int cPasajero::getNVuelo()
 {
 	return this->Nvuelo;
 }
@@ -67,7 +67,7 @@ int cListaPasajeros:: BuscarDNI(string dni) {
 	return -1;//si no encuentro, retorna -1
 }
 
-cListaPasajeros* cListaPasajeros::FiltrarLista(string vuelo)
+cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 {
 	cListaPasajeros* filtro = new cListaPasajeros(this->cant_act); //filtro es la lista nueva 
 	for (int i = 0; i < this->cant_act; i++)

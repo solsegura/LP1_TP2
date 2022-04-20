@@ -20,12 +20,12 @@ class cPasajero {
 	string DNI;
 	string Nombre;
 	string Fecha;
-	string Nvuelo;
+	int Nvuelo;
 	int Asiento;
 	cListaEquipaje* ListaValijas;
 
 public:
-	cPasajero(string dni, string nombre, string fecha, string nvuelo, int asiento, int cant_valijas);
+	cPasajero(string dni, string nombre, string fecha, int nvuelo, int asiento, int cant_valijas);
 	~cPasajero();
 	/// <summary>
 	/// Llama  al metodo agregar valija de la clase cListaEquipaje para agregar una valija a la losta del pasajero
@@ -33,7 +33,7 @@ public:
 	/// <param name="valija_nueva"></param>
 	void AgregarEquipaje(cEquipaje* valija_nueva);
 	cEquipaje* EliminarEquipaje(cEquipaje* valija);
-	string getNVuelo();
+	int getNVuelo();
 	string getDNI();
 	cListaEquipaje* getListavalijas();
 };
@@ -65,7 +65,7 @@ public:
 	/// </summary>
 	/// <param name="vuelo"></param>
 	/// <returns></returns>
-	cListaPasajeros* FiltrarLista(string vuelo);  
+	cListaPasajeros* FiltrarLista(int vuelo);  
 	int BuscarDNI(string dni);
 
 	unsigned int getCant();

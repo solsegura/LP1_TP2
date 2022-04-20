@@ -14,7 +14,7 @@ enum estado { on_time, delayed, boarding, flying};
 enum part_arribo { partida, arribo };
 
 class cVuelo {
-	string NumeroVuelo;
+	static int NumeroVuelo;   //la idea seria hacerlo como el pampa hizo lo del dni
 	estado EstadoVuelo;
 	cAvion* Avion;
 	string FechaHora_Salida;
@@ -24,14 +24,17 @@ class cVuelo {
 	cListaPasajeros* Pasajeros; //filtro
 
 public:
-	cVuelo(cAvion* avion, string fechasalida, string fechallegada, string destino, part_arribo poa, cListaPasajeros pasajeros);
+	cVuelo(cAvion* avion, string fechasalida, string fechallegada, string destino, part_arribo poa);
 	~cVuelo();
+
 	cPasajero* DatosPasajero(string DNI);
 	void AgregarPasajero(cPasajero* pasajero);
 	void CambiarPasajero(cPasajero* pasajero_nuevo, cPasajero* pasajero_viejo);
 	void EliminarPasajero(cPasajero* pasajero);
 	void SetearAvion();
 	void SetEstado(estado Estado);
+	void SetListaPasajeros(cListaPasajeros* lista);
+	static int getNumeroDeVuelo();
 };
 
 class cListaVuelos {

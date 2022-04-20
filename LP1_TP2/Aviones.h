@@ -33,6 +33,7 @@ public:
 	bool ChequearCapacidadMaxima();
 	void setPesoActual(int peso);
 	void setCantDePasajeros(int cant);
+	int getCantPasajerosMax();
 };
 
 class cListaAviones {

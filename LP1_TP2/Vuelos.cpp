@@ -4,6 +4,19 @@
 #include "Vuelos.h"
 #include "Valijas.h"
 
+cVuelo::cVuelo(cAvion* avion, string fechasalida, string fechallegada, string destino, part_arribo poa)
+{
+	this->Pasajeros = new cListaPasajeros(this->Avion->getCantPasajerosMax());  //creamos la lista de pasajeros del vuelo en base a la capacidad maxima del avion
+	NumeroVuelo++;
+}
+
+cVuelo::~cVuelo()
+{
+	NumeroVuelo--;
+}
+
+int cVuelo::NumeroVuelo = 0;
+
 cPasajero* cVuelo::DatosPasajero(string DNI)
 {
 	int indx = this->Pasajeros->BuscarDNI(DNI);

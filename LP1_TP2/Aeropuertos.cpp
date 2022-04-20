@@ -3,12 +3,12 @@
 #include "Aeropuertos.h"
 #include "Vuelos.h"
 
-cAeropuerto::cAeropuerto(string id, int capacidad, cListaAviones* aviones, cListaVuelos* vuelos)
+cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max)
 {
 	this->ID = id;
 	this->Capacidad = capacidad;
-	this->Lista_aviones = aviones;
-	this->Lista_vuelos = vuelos;
+	this->Lista_aviones = new cListaAviones(capacidad);  //preguntar donde irian los deletes
+	this->Lista_vuelos = new cListaVuelos(cant_vuelos_max);
 }
 
 cAeropuerto::~cAeropuerto()
