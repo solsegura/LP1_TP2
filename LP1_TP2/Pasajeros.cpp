@@ -75,3 +75,14 @@ cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 			filtro->AgregarPasajero(Vector_Pasajeros[i]); //agregar a filtro cada pasajero que tenga el vuelo = vuelo
 	return filtro;
 }
+
+cListaPasajeros* cListaPasajeros::FiltrarDia(string dia)
+{
+	cListaPasajeros* filtroDia = new cListaPasajeros(this->cant_act); //lista filtrodia tam. cant act
+	for (int i = 0; i < this->cant_act; i++)
+	{
+		if (Vector_Pasajeros[i]->getFecha() == dia)
+			filtroDia->AgregarPasajero(Vector_Pasajeros[i]);
+	}
+	return filtroDia;
+}

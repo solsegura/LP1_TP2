@@ -3,10 +3,11 @@
 #include "Aeropuertos.h"
 #include "Vuelos.h"
 
-cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max)
+cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPasajeros* lista_pasajeros)
 {
 	this->ID = id;
 	this->Capacidad = capacidad;
+	this->Lista_pasajeros = lista_pasajeros;
 	this->Lista_aviones = new cListaAviones(capacidad);  //preguntar donde irian los deletes
 	this->Lista_vuelos = new cListaVuelos(cant_vuelos_max);
 }
@@ -32,4 +33,10 @@ void cAeropuerto::DarPermisoAterrizar(cAvion* avion)
 		avion->RecibirPermiso(true);  //asignamos true en el permiso de ese avion
 		this->Lista_aviones->AgregarAvion(avion);
 	}
+}
+
+int cAeropuerto::PasajerosDia(string dia)
+{
+	cListaPasajeros* FiltroDia = this->Lista_pasajeros->FiltrarDia(dia);
+	return FiltroDia->getCant();
 }

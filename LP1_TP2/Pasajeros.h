@@ -19,7 +19,7 @@ AgregarEquipaje que chequee que el equipaje total no supere los 25 kg por person
 class cPasajero {
 	string DNI;
 	string Nombre;
-	string Fecha;
+	string Fecha; //del vuelo
 	int Nvuelo;
 	int Asiento;
 	cListaEquipaje* ListaValijas;
@@ -35,6 +35,7 @@ public:
 	cEquipaje* EliminarEquipaje(cEquipaje* valija);
 	int getNVuelo();
 	string getDNI();
+	string getFecha();
 	cListaEquipaje* getListavalijas();
 };
 
@@ -66,6 +67,7 @@ public:
 	/// <param name="vuelo"></param>
 	/// <returns></returns>
 	cListaPasajeros* FiltrarLista(int vuelo);  
+	cListaPasajeros* FiltrarDia(string dia);
 	int BuscarDNI(string dni);
 
 	unsigned int getCant();
