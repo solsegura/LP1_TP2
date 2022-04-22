@@ -35,7 +35,7 @@ cListaEquipaje::~cListaEquipaje()
 
 void cListaEquipaje::AgregarValija(cEquipaje* valija_nueva)
 {
-	if (this->cant_act < this->tam) {
+	if (this->cant_act < this->tam) { //tam= max
 		this->Vector_Equipaje[cant_act] = valija_nueva;
 		cant_act++;
 	}

@@ -14,7 +14,8 @@ enum estado { on_time, delayed, boarding, flying};
 enum part_arribo { partida, arribo };
 
 class cVuelo {
-	static int NumeroVuelo;   //la idea seria hacerlo como el pampa hizo lo del dni
+	static int ContVuelo;   //la idea seria hacerlo como el pampa hizo lo del dni
+	const int NumeroVuelo;
 	estado EstadoVuelo;
 	cAvion* Avion;
 	string FechaHora_Salida;
