@@ -3,8 +3,9 @@
 #include "Aeropuertos.h"
 #include "Vuelos.h"
 #include "Valijas.h"
+#include "cFecha.h"
 
-cVuelo::cVuelo(cAvion* avion, string fechasalida, string fechallegada, string destino, part_arribo poa): NumeroVuelo(ContVuelo++) //inicializo const con el valor de static
+cVuelo::cVuelo(cAvion* avion, cFecha* fechasalida, cFecha* fechallegada, string destino, part_arribo poa): NumeroVuelo(ContVuelo++) //inicializo const con el valor de static
 {
 	this->Pasajeros = new cListaPasajeros(this->Avion->getCantPasajerosMax());  //creamos la lista de pasajeros del vuelo en base a la capacidad maxima del avion
 	ContVuelo++;
@@ -51,4 +52,14 @@ void cVuelo::SetearAvion()
 	this->Avion->setPesoActual(peso);
 	this->Avion->setCantDePasajeros(this->Pasajeros->getCant());
 
+}
+
+part_arribo cVuelo::getPoA()
+{
+	return part_arribo();
+}
+
+int cListaVuelos::getCantAct()
+{
+	return 0;
 }

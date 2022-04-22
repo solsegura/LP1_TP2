@@ -17,6 +17,7 @@ de valijas que transporta (y el peso de cada una). Además, el método
 AgregarEquipaje que chequee que el equipaje total no supere los 25 kg por persona.*/
 
 class cPasajero {
+	friend cListaPasajeros* cAeropuerto::FiltrarDia(cFecha* dia);
 	friend class cListaPasajeros;
 	string DNI;
 	string Nombre;
@@ -41,6 +42,8 @@ public:
 };
 
 class cListaPasajeros {
+	friend cListaPasajeros* cAeropuerto::FiltrarDia(cFecha* dia); //BRUNOOOOOOOOOOOOO
+
 	cPasajero** Vector_Pasajeros;  //cada vez que ingreso un pasajero deberia agregarlo en la mega lista de pasajeros ponele creo
 	unsigned int tam, cant_act;
 
@@ -68,8 +71,8 @@ public:
 	/// <param name="vuelo"></param>
 	/// <returns></returns>
 	cListaPasajeros* FiltrarLista(int vuelo);  
-	cListaPasajeros* FiltrarDia(string dia);
 	int BuscarDNI(string dni);
+	//cPasajero** getVector();
 
 	unsigned int getCant();
 	cPasajero* getPasajero(int indice);

@@ -14,7 +14,7 @@ class cListaVuelos;
 
 class cAeropuerto {
 	string ID;
-	int Capacidad;
+	int Capacidad; //aviones
 	cListaAviones* Lista_aviones;
 	cListaVuelos* Lista_vuelos;
 	cListaPasajeros* Lista_pasajeros;
@@ -30,7 +30,7 @@ public:
 	/// <param name="avion"></param>
 	void DarPermisoDespegue(cAvion* avion);  //podria hacerlo en un solo metodo DarPermiso chequeando el estado del avion
 	void DarPermisoAterrizar(cAvion* avion);
-	int PasajerosDia(string dia);
+	cListaPasajeros* FiltrarDia(cFecha* dia);
 	int getCapacidad();
 
 };

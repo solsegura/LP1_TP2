@@ -33,6 +33,9 @@
     <ClCompile Include="Valijas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cFecha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pasajeros.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Valijas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cFecha.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

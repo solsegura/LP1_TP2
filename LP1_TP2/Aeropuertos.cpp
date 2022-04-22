@@ -34,9 +34,23 @@ void cAeropuerto::DarPermisoAterrizar(cAvion* avion)
 		this->Lista_aviones->AgregarAvion(avion);
 	}
 }
-
-int cAeropuerto::PasajerosDia(string dia)
+cListaPasajeros* cAeropuerto::FiltrarDia(cFecha* dia)
 {
-	cListaPasajeros* FiltroDia = this->Lista_pasajeros->FiltrarDia(dia);
-	return FiltroDia->getCant();
+	cListaPasajeros* filtroDia = new cListaPasajeros(this->Lista_pasajeros->getCant()); //lista filtrodia tam. cant act
+
+	for (int i = 0; i < this->Lista_vuelos->cant_act; i++) //borrar gets!!!!!!!
+	{
+		if (this->Lista_vuelos->VectorVuelos[i]->PoA == arribo)
+		{
+			if (this->Lista_vuelos->VectorVuelos[i]->FechaHora_Llegada == dia)
+				for (int j = 0; j < this->Lista_vuelos->VectorVuelos[i]->Pasajeros->getCant(); j++)
+					filtroDia->AgregarPasajero(this->Lista_vuelos->VectorVuelos[i]->Pasajeros->Vector_Pasajeros[j]); //VER CLASE FRIENDDDDDD
+		}
+		else {
+			if (this->Lista_vuelos->VectorVuelos[i]->FechaHora_Salida == dia)
+				for (int j = 0; j < this->Lista_vuelos->VectorVuelos[i]->Pasajeros->getCant(); j++)
+					filtroDia->AgregarPasajero(this->Lista_vuelos->VectorVuelos[i]->Pasajeros->Vector_Pasajeros[j]);
+		}
+	}
+	return filtroDia;
 }

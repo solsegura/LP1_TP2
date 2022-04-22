@@ -78,7 +78,7 @@ cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 	return filtro;
 }
 
-cListaPasajeros* cListaPasajeros::FiltrarDia(string dia)
+/*cListaPasajeros* cListaPasajeros::FiltrarDia(string dia)
 {
 	cListaPasajeros* filtroDia = new cListaPasajeros(this->cant_act); //lista filtrodia tam. cant act
 	for (int i = 0; i < this->cant_act; i++)
@@ -87,4 +87,4 @@ cListaPasajeros* cListaPasajeros::FiltrarDia(string dia)
 			filtroDia->AgregarPasajero(Vector_Pasajeros[i]);
 	}
 	return filtroDia;
-}
+}*/

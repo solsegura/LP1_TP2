@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Aeropuertos.cpp" />
     <ClCompile Include="Aviones.cpp" />
+    <ClCompile Include="cFecha.cpp" />
     <ClCompile Include="LP1_TP2.cpp" />
     <ClCompile Include="Pasajeros.cpp" />
     <ClCompile Include="Valijas.cpp" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="Aeropuertos.h" />
     <ClInclude Include="Aviones.h" />
+    <ClInclude Include="cFecha.h" />
     <ClInclude Include="Pasajeros.h" />
     <ClInclude Include="Valijas.h" />
     <ClInclude Include="Vuelos.h" />
