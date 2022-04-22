@@ -29,10 +29,9 @@ void cVuelo::AgregarPasajero(cPasajero* pasajero)
 	this->Pasajeros->AgregarPasajero(pasajero);
 }
 
-void cVuelo::CambiarPasajero(cPasajero* pasajero_nuevo, cPasajero* pasajero_viejo) //BRUNO!!!
+void cVuelo::CambiarPasajero(cPasajero* pasajero1, cPasajero* pasajero2) 
 {
-	int idx = this->Pasajeros->Buscar(pasajero_viejo);
-	this->Pasajeros->ModificarPasajero(pasajero_nuevo, idx);
+	this->Pasajeros->ModificarPasajero(pasajero2, pasajero1);
 }
 
 void cVuelo::EliminarPasajero(cPasajero* pasajero)

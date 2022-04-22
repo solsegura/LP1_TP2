@@ -17,9 +17,10 @@ de valijas que transporta (y el peso de cada una). Además, el método
 AgregarEquipaje que chequee que el equipaje total no supere los 25 kg por persona.*/
 
 class cPasajero {
+	friend class cListaPasajeros;
 	string DNI;
 	string Nombre;
-	string Fecha; //del vuelo
+	string Fecha; //de nacimiento
 	int Nvuelo;
 	int Asiento;
 	cListaEquipaje* ListaValijas;
@@ -52,7 +53,7 @@ public:
 	/// </summary>
 	/// <param name="pasajero"></param>
 	/// <param name="indice"></param>
-	void ModificarPasajero(cPasajero* pasajero, int indice);
+	void ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajero2);
 	//void QuitarPasajero(cPasajero* pasajero);
 	void EliminarPasajero(cPasajero* pasajero);
 	/// <summary>

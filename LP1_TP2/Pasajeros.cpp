@@ -39,9 +39,11 @@ string cPasajero::getDNI()
 	return this->DNI;
 }
 
-void cListaPasajeros::ModificarPasajero(cPasajero* pasajero, int indice) //cambiar
+void cListaPasajeros::ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajero2) //cambiar de asiento
 {
-	this->Vector_Pasajeros[indice] = pasajero;
+	int aux = pasajero1->Asiento;
+	pasajero1->Asiento = pasajero2->Asiento;
+	pasajero2->Asiento = aux;
 }
 
 void cListaPasajeros::EliminarPasajero(cPasajero* pasajero)

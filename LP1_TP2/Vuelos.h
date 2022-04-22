@@ -18,7 +18,7 @@ class cVuelo {
 	const int NumeroVuelo;
 	estado EstadoVuelo;
 	cAvion* Avion;
-	string FechaHora_Salida;
+	string FechaHora_Salida;  // hacer cfecha
 	string FechaHora_Llegada;
 	string Destino;
 	part_arribo PoA;
