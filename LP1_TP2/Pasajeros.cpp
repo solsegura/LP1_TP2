@@ -3,6 +3,7 @@
 #include "Aeropuertos.h"
 #include "Vuelos.h"
 #include "Valijas.h"
+#include "cFecha.h"
 
 cPasajero::cPasajero(string dni, string nombre, string fecha, int nvuelo, int asiento, int cant_valijas)
 {

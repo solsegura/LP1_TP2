@@ -11,6 +11,8 @@ class cAvion;
 class cPasajero;
 class cListaAviones;
 class cListaVuelos;
+class cListaPasajeros;
+class cFecha;
 
 class cAeropuerto {
 	string ID;
@@ -30,7 +32,18 @@ public:
 	/// <param name="avion"></param>
 	void DarPermisoDespegue(cAvion* avion);  //podria hacerlo en un solo metodo DarPermiso chequeando el estado del avion
 	void DarPermisoAterrizar(cAvion* avion);
-	cListaPasajeros* FiltrarDia(cFecha* dia);
+	/// <summary>
+	/// Metodo que cuenta la cantidad de pasajeros que viajaron en un dia
+	/// </summary>
+	/// <param name="dia"></param>
+	/// <returns></returns>
+	int FiltrarDia(cFecha* dia);
+	/// <summary>
+	/// Cuenta la cantidad de vuelos que despegaron o aterrizaron en un dia (se pasa el dia por parametro)
+	/// </summary>
+	/// <param name="dia"></param>
+	/// <returns></returns>
+	int CantVuelosDia(cFecha* dia);
 	int getCapacidad();
 
 };

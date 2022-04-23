@@ -2,6 +2,8 @@
 #include "Pasajeros.h"
 #include "Aeropuertos.h"
 #include "Vuelos.h"
+#include "cFecha.h"
+#include "Valijas.h"
 
 cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPasajeros* lista_pasajeros)
 {
@@ -34,7 +36,7 @@ void cAeropuerto::DarPermisoAterrizar(cAvion* avion)
 		this->Lista_aviones->AgregarAvion(avion);
 	}
 }
-cListaPasajeros* cAeropuerto::FiltrarDia(cFecha* dia)
+int cAeropuerto::FiltrarDia(cFecha* dia)
 {
 	cListaPasajeros* filtroDia = new cListaPasajeros(this->Lista_pasajeros->getCant()); //lista filtrodia tam. cant act
 
@@ -52,5 +54,22 @@ cListaPasajeros* cAeropuerto::FiltrarDia(cFecha* dia)
 					filtroDia->AgregarPasajero(this->Lista_vuelos->VectorVuelos[i]->Pasajeros->Vector_Pasajeros[j]);
 		}
 	}
-	return filtroDia;
+	return filtroDia->getCant();
 }
+
+int cAeropuerto::CantVuelosDia(cFecha* dia)
+{
+	cListaVuelos* filtroDia = new cListaVuelos(this->Lista_vuelos->cant_act);
+	for (int i = 0; i < this->Lista_vuelos->cant_act; i++) //borrar gets!!!!!!!
+	{
+		if (this->Lista_vuelos->VectorVuelos[i]->PoA == arribo)
+			if (this->Lista_vuelos->VectorVuelos[i]->FechaHora_Llegada == dia)
+				filtroDia->AgregarVuelo(this->Lista_vuelos->VectorVuelos[i]);
+		
+		else if (this->Lista_vuelos->VectorVuelos[i]->FechaHora_Salida == dia)
+				filtroDia->AgregarVuelo(this->Lista_vuelos->VectorVuelos[i]);
+		
+	}
+	return filtroDia->cant_act;
+}
+

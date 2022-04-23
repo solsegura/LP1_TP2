@@ -15,8 +15,9 @@ enum estado { on_time, delayed, boarding, flying};
 enum part_arribo { partida, arribo };
 
 class cVuelo {
+	friend int cAeropuerto::CantVuelosDia(cFecha* dia);
 	friend class cFecha;
-	friend cListaPasajeros* cAeropuerto::FiltrarDia(cFecha* dia);
+	friend int cAeropuerto::FiltrarDia(cFecha* dia);
 	static int ContVuelo;   //la idea seria hacerlo como el pampa hizo lo del dni
 	const int NumeroVuelo;
 	estado EstadoVuelo;
@@ -45,7 +46,8 @@ public:
 };
 
 class cListaVuelos {
-	friend cListaPasajeros* cAeropuerto::FiltrarDia(cFecha* dia);
+	friend int cAeropuerto::CantVuelosDia(cFecha* dia);
+	friend int cAeropuerto::FiltrarDia(cFecha* dia);
 	cVuelo** VectorVuelos;
 	unsigned int tam, cant_act;
 
