@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <string.h>
 #include <string>
@@ -40,6 +41,10 @@ public:
 	string getDNI();
 	string getFecha();
 	cListaEquipaje* getListavalijas();
+
+	cPasajero operator+(cEquipaje& valija_nueva);
+	cPasajero operator-(cEquipaje& valija);
+
 };
 
 class cListaPasajeros {
@@ -47,6 +52,7 @@ class cListaPasajeros {
 	friend int cAeropuerto::FiltrarDia(cFecha* dia); //BRUNOOOOOOOOOOOOO
 	cPasajero** Vector_Pasajeros;  //cada vez que ingreso un pasajero deberia agregarlo en la mega lista de pasajeros ponele creo
 	unsigned int tam, cant_act;
+
 
 public:
 	cListaPasajeros(int T); //tam max
@@ -77,4 +83,5 @@ public:
 
 	unsigned int getCant();
 	cPasajero* getPasajero(int indice);
+	cPasajero* operator[](int indice);
 };

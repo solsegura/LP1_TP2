@@ -28,11 +28,11 @@ int main()
 	ListaPasajeros->AgregarPasajero(Pasajero3);
 	ListaPasajeros->AgregarPasajero(Pasajero4);
 	ListaPasajeros->AgregarPasajero(Pasajero5);
+	cPasajero* caca= (*ListaPasajeros)[2];
 
-
-	Pasajero1->AgregarEquipaje(Valija1);   //los pasajeros agregan su equipaje
-	Pasajero1->AgregarEquipaje(Valija1);
-	Pasajero2->AgregarEquipaje(Valija4);
+	*Pasajero1 + *Valija1;  //los pasajeros agregan su equipaje
+	*Pasajero1 + *Valija1;
+	Pasajero2->AgregarEquipaje(Valija4); //cambiar con sobrecarga
 	Pasajero2->AgregarEquipaje(Valija2);
 	Pasajero3->AgregarEquipaje(Valija1);
 	Pasajero3->AgregarEquipaje(Valija2);
@@ -40,6 +40,7 @@ int main()
 	Pasajero4->AgregarEquipaje(Valija2);
 	Pasajero4->AgregarEquipaje(Valija2);
 	Pasajero5->AgregarEquipaje(Valija4);
+	*Pasajero1 - *Valija1;  //saco una valija
 
 	cAvion* Avion1 = new cAvion("Flybondi01", 20);
 	cAvion* Avion2 = new cAvion("Flybondi02", 2);

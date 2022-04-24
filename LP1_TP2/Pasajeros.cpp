@@ -40,6 +40,18 @@ string cPasajero::getDNI()
 	return this->DNI;
 }
 
+cPasajero cPasajero::operator+(cEquipaje& valija_nueva)
+{
+	this->AgregarEquipaje(&valija_nueva);
+	return *this;
+}
+
+cPasajero cPasajero::operator-(cEquipaje& valija)
+{
+	this->EliminarEquipaje(&valija);
+	return *this;
+}
+
 void cListaPasajeros::ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajero2) //cambiar de asiento
 {
 	int aux = pasajero1->Asiento;
@@ -68,6 +80,11 @@ int cListaPasajeros:: BuscarDNI(string dni) {
 		}
 	}
 	return -1;//si no encuentro, retorna -1
+}
+
+cPasajero* cListaPasajeros::operator[](int indice)
+{
+	return this->Vector_Pasajeros[indice];
 }
 
 cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)

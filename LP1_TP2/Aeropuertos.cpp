@@ -46,12 +46,12 @@ int cAeropuerto::FiltrarDia(cFecha* dia)
 		{
 			if (this->Lista_vuelos->VectorVuelos[i]->FechaHora_Llegada == dia)
 				for (int j = 0; j < this->Lista_vuelos->VectorVuelos[i]->Pasajeros->getCant(); j++)
-					filtroDia->AgregarPasajero(this->Lista_vuelos->VectorVuelos[i]->Pasajeros->Vector_Pasajeros[j]); //VER CLASE FRIENDDDDDD
+					filtroDia->AgregarPasajero((*(this->Lista_vuelos->VectorVuelos[i]->Pasajeros))[j]); //VER CLASE FRIENDDDDDD
 		}
 		else {
 			if (this->Lista_vuelos->VectorVuelos[i]->FechaHora_Salida == dia)
 				for (int j = 0; j < this->Lista_vuelos->VectorVuelos[i]->Pasajeros->getCant(); j++)
-					filtroDia->AgregarPasajero(this->Lista_vuelos->VectorVuelos[i]->Pasajeros->Vector_Pasajeros[j]);
+					filtroDia->AgregarPasajero((*(this->Lista_vuelos->VectorVuelos[i]->Pasajeros))[j]); //usamos sobrecarga de [] para acceder a cada pasajero del vuelo
 		}
 	}
 	return filtroDia->getCant();
