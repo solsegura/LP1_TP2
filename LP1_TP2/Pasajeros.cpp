@@ -5,11 +5,10 @@
 #include "Valijas.h"
 #include "cFecha.h"
 
-cPasajero::cPasajero(string dni, string nombre, string fecha, int nvuelo, int asiento, int cant_valijas)
+cPasajero::cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int asiento, int cant_valijas)
 {
 	this->DNI = dni;
 	this->Nombre = nombre;
-	this->Fecha = fecha;
 	this->Nvuelo = nvuelo;
 	this->Asiento = asiento;
 	this->ListaValijas = new cListaEquipaje(cant_valijas);
@@ -40,6 +39,13 @@ string cPasajero::getDNI()
 	return this->DNI;
 }
 
+cFecha* cPasajero::getFecha()
+{
+	return this->Fecha;
+}
+
+
+
 cPasajero cPasajero::operator+(cEquipaje& valija_nueva)
 {
 	this->AgregarEquipaje(&valija_nueva);
@@ -50,6 +56,12 @@ cPasajero cPasajero::operator-(cEquipaje& valija)
 {
 	this->EliminarEquipaje(&valija);
 	return *this;
+}
+
+cListaPasajeros::cListaPasajeros(int T)
+{
+	this->tam = T;
+	this->cant_act = 0;
 }
 
 void cListaPasajeros::ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajero2) //cambiar de asiento

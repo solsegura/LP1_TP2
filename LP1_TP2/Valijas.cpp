@@ -11,11 +11,16 @@ cEquipaje::~cEquipaje()
 {
 }
 
+int cEquipaje::GetPeso()
+{
+	return this->Peso;
+}
+
 cListaEquipaje::cListaEquipaje(int T)
 {
 	this->tam = T;
 	this->cant_act = 0;
-	this->Vector_Equipaje = new cEquipaje * [T];
+	this->Vector_Equipaje = new cEquipaje * [T]; 
 	for (int i = 0; i < T; i++)
 		this->Vector_Equipaje[i] = NULL;
 }

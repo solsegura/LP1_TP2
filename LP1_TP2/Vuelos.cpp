@@ -59,6 +59,34 @@ part_arribo cVuelo::getPoA()
 	return part_arribo();
 }
 
+cFecha* cVuelo::getFecha_Llegada()
+{
+	return this->FechaHora_Llegada;
+}
+
+cFecha* cVuelo::getFecha_Salida()
+{
+	return this->FechaHora_Salida;
+}
+
+int cVuelo::getNumeroDeVuelo()
+{
+	return NumeroVuelo; //const static, quilombo
+}
+
+
+
+
+cListaVuelos::cListaVuelos(int T)
+{
+	this->tam = T;
+	this->cant_act = 0;
+	this->VectorVuelos = new cVuelo* [T]; //DELETE
+	for (int i = 0; i < T; i++)
+		this->VectorVuelos[i] = NULL;
+}
+
+
 int cListaVuelos::getCantAct()
 {
 	return 0;

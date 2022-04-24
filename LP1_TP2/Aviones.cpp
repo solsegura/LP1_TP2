@@ -78,6 +78,20 @@ bool cAvion::ChequearCapacidadMaxima()
 		return false;
 }
 
+int cAvion::getCantPasajerosMax()
+{
+	return this->CantPasajerosMax;
+}
+
+cListaAviones::cListaAviones(int T)
+{
+	this->tam = T;
+	this->cant_act = 0;
+	this->VectorAviones = new cAvion * [T]; //DELETE
+	for (int i = 0; i < T; i++)
+		this->VectorAviones[i] = NULL;
+}
+
 cAvion* cListaAviones::QuitarAvion(cAvion* avion)
 {
 	int idx = this->Buscar(avion);
@@ -85,4 +99,14 @@ cAvion* cListaAviones::QuitarAvion(cAvion* avion)
 		return this->VectorAviones[idx];
 
 	return NULL;
+}
+
+int cListaAviones::getCant()
+{
+	return this->cant_act;
+}
+
+int cListaAviones::getTam()
+{
+	return this->tam;
 }

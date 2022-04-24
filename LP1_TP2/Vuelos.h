@@ -42,7 +42,8 @@ public:
 	cFecha* getFecha_Llegada();
 	cFecha* getFecha_Salida();
 	void SetListaPasajeros(cListaPasajeros* lista);
-	static int getNumeroDeVuelo();
+	static int getNumeroDeVuelo(); //NUMERO VUELO ES CONST, error en el cpp, deberia ser solo int.
+
 };
 
 class cListaVuelos {

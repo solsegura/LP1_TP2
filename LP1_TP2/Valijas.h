@@ -10,13 +10,7 @@ class cEquipaje {
 	int Peso;
 
 public:
-	/// <summary>
-	/// Constructor de la clase Equipaje 
-	/// </summary>
-	/// <param name="desc"></param>
-	/// <param name="peso"></param>
 	cEquipaje(string desc, int peso);
-	///Destructor de Equipaje
 	~cEquipaje(); 
 	int GetPeso();
 
@@ -27,26 +21,13 @@ class cListaEquipaje {
 	int tam, cant_act;
 
 public:
-	/// <summary>
-	/// Constructor de lista Equipaje, inicializa la cantidad actual de la lista en 0, y recibe T para el tamanio de la lista
-	/// </summary>
-	/// <param name="T"></param>
-	cListaEquipaje(int T); //max
-	///Destructor de Lista Equipaje
+	
+	cListaEquipaje(int T); //max// Constructor de lista Equipaje, inicializa la cantidad actual de la lista en 0, y recibe T para el tamanio de la lista
 	~cListaEquipaje();
-	/// <summary>
-	/// Agrega valija_nueva a la lista
-	/// </summary>
-	/// <param name="valija_nueva"></param>
-	void AgregarValija(cEquipaje* valija_nueva);
-	/// <summary>
-	/// Elimina valija de la lista
-	/// </summary>
-	/// <param name="valija"></param>
-	cEquipaje* EliminarValija(cEquipaje* valija);
-
+	void AgregarValija(cEquipaje* valija_nueva);/// Agrega valija_nueva a la lista
+	int getCant();
 	int SumarPeso();
 	cEquipaje* GetValija(int indice);
-
-	int getCant();
+	cEquipaje* EliminarValija(cEquipaje* valija);
+	
 };

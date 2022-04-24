@@ -23,23 +23,19 @@ class cPasajero {
 	friend class cListaPasajeros;
 	string DNI;
 	string Nombre;
-	string Fecha; //de nacimiento
+	cFecha* Fecha; //de nacimiento
 	int Nvuelo;
 	int Asiento;
 	cListaEquipaje* ListaValijas;
 
 public:
-	cPasajero(string dni, string nombre, string fecha, int nvuelo, int asiento, int cant_valijas);
+	cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int asiento, int cant_valijas);
 	~cPasajero();
-	/// <summary>
-	/// Llama  al metodo agregar valija de la clase cListaEquipaje para agregar una valija a la losta del pasajero
-	/// </summary>
-	/// <param name="valija_nueva"></param>
-	void AgregarEquipaje(cEquipaje* valija_nueva);
+	void AgregarEquipaje(cEquipaje* valija_nueva);// Llama  al metodo agregar valija de la clase cListaEquipaje para agregar una valija a la losta del pasajero
 	cEquipaje* EliminarEquipaje(cEquipaje* valija);
 	int getNVuelo();
 	string getDNI();
-	string getFecha();
+	cFecha* getFecha();
 	cListaEquipaje* getListavalijas();
 
 	cPasajero operator+(cEquipaje& valija_nueva);
@@ -58,28 +54,11 @@ public:
 	cListaPasajeros(int T); //tam max
 	~cListaPasajeros();
 	void AgregarPasajero(cPasajero* pasajero);
-	/// <summary>
-	/// Copia la nueva informacion del pasajero en el indice que le pasamos por parametro
-	/// </summary>
-	/// <param name="pasajero"></param>
-	/// <param name="indice"></param>
-	void ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajero2);
-	//void QuitarPasajero(cPasajero* pasajero);
+	void ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajero2);/// Copia la nueva informacion del pasajero en el indice que le pasamos por parametro
 	void EliminarPasajero(cPasajero* pasajero);
-	/// <summary>
-	/// Retorna la posicion en la que esta el pasajero en la lista o -1 si no esta
-	/// </summary>
-	/// <param name="pasajero"></param>
-	/// <returns></returns>
-	int Buscar(cPasajero* pasajero);
-	/// <summary>
-	/// Devuelve una lista de pasajeros filtrada por numero de vuelo
-	/// </summary>
-	/// <param name="vuelo"></param>
-	/// <returns></returns>
-	cListaPasajeros* FiltrarLista(int vuelo);  
+	int Buscar(cPasajero* pasajero);// Retorna la posicion en la que esta el pasajero en la lista o -1 si no esta
+	cListaPasajeros* FiltrarLista(int vuelo);  /// Devuelve una lista de pasajeros filtrada por numero de vuelo
 	int BuscarDNI(string dni);
-	//cPasajero** getVector();
 
 	unsigned int getCant();
 	cPasajero* getPasajero(int indice);
