@@ -56,7 +56,7 @@ void cVuelo::SetearAvion()
 
 part_arribo cVuelo::getPoA()
 {
-	return part_arribo();
+	return this->PoA;
 }
 
 cFecha* cVuelo::getFecha_Llegada()
@@ -71,7 +71,7 @@ cFecha* cVuelo::getFecha_Salida()
 
 int cVuelo::getNumeroDeVuelo()
 {
-	return NumeroVuelo; //const static, quilombo
+	return this->NumeroVuelo; //const static, quilombo
 }
 
 
@@ -87,7 +87,50 @@ cListaVuelos::cListaVuelos(int T)
 }
 
 
+
+
 int cListaVuelos::getCantAct()
 {
 	return 0;
+}
+
+int cListaVuelos::Buscar(cVuelo* vuelo)
+{
+	for (int i = 0; i < this->cant_act; i++) {
+		if (this->VectorVuelos[i] == vuelo) {
+			return i; // Retorno la posicion en caso de encontrar el avion
+		}
+	}
+	return -1;//Retorno -1 en caso de no encontrarlo
+}
+
+void cListaVuelos::AgregarVuelo(cVuelo* vuelo)
+{
+	if (this->cant_act < this->tam)
+	{
+		this->VectorVuelos[cant_act] = vuelo;
+		cant_act++;
+	}
+
+}
+
+/*void cListaVuelos::QuitarVuelo(cVuelo* vuelo) // ver si esta okey
+{ 
+    int idx = this->Buscar(vuelo);
+	*this = VectorVuelos [idx]
+}
+
+*/
+void cListaVuelos::EliminarVuelo(cVuelo* vuelo)
+{
+	for (int i = 0; i < this->cant_act; i++) {
+		if (this->VectorVuelos[i] == vuelo)
+		{
+			this->VectorVuelos[i] = this->VectorVuelos[this->cant_act - 1]; 
+			this->VectorVuelos[this->cant_act - 1] = NULL; 
+
+		}
+	}
+
+
 }

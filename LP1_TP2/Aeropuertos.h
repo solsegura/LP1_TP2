@@ -31,6 +31,10 @@ public:
 	void DarPermisoAterrizar(cAvion* avion);
 	int FiltrarDia(cFecha* dia);/// Metodo que cuenta la cantidad de pasajeros que viajaron en un dia
 	int CantVuelosDia(cFecha* dia);	/// Cuenta la cantidad de vuelos que despegaron o aterrizaron en un dia (se pasa el dia por parametro)
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	int getCapacidad();
 
 };

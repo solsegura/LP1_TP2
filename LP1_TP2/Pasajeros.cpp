@@ -64,6 +64,7 @@ cListaPasajeros::cListaPasajeros(int T)
 	this->cant_act = 0;
 }
 
+
 void cListaPasajeros::ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajero2) //cambiar de asiento
 {
 	int aux = pasajero1->Asiento;
@@ -71,9 +72,7 @@ void cListaPasajeros::ModificarPasajero(cPasajero* pasajero1, cPasajero* pasajer
 	pasajero2->Asiento = aux;
 }
 
-void cListaPasajeros::EliminarPasajero(cPasajero* pasajero)
-{
-}
+
 
 int cListaPasajeros::Buscar(cPasajero* pasajero)
 {
@@ -118,3 +117,29 @@ cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 	}
 	return filtroDia;
 }*/
+
+
+
+void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
+{
+	if (this->cant_act < this->tam)
+	{
+		this->Vector_Pasajeros[cant_act] = pasajero;
+		cant_act++;
+	}
+}
+
+void cListaPasajeros::EliminarPasajero(cPasajero* pasajero)
+{
+	for (int i = 0; i < this->cant_act; i++) {
+		if (this->Vector_Pasajeros[i] == pasajero) // si encuentro al pasajero
+		{
+			this->Vector_Pasajeros[i] = this->Vector_Pasajeros[this->cant_act - 1];
+			this->Vector_Pasajeros[this->cant_act - 1] = NULL;
+
+		}
+	}
+
+}
+
+
