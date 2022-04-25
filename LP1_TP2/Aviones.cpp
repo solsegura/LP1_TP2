@@ -28,16 +28,20 @@ cAvion::~cAvion()
 
 void cAvion::Despegar()
 {
-	if (this->Permiso == true){
-		if (this->ChequearCapacidadMaxima() && this->ChequearCargaMaxima()) {  //hacemos los chequeos necesarios
-			this->Estado = volando;  //cambiamos el estado de "en tierra" a "volando" porque ahora el avion despego
-			this->Permiso = false;   //dejamos permiso en false
+	if (this->Permiso == true) {
+		try {
+			if (this->ChequearCapacidadMaxima() && this->ChequearCargaMaxima()) {  //hacemos los chequeos necesarios
+				this->Estado = volando;  //cambiamos el estado de "en tierra" a "volando" porque ahora el avion despego
+				this->Permiso = false;   //dejamos permiso en false
+			}
 		}
-		else
-			printf("\nTiene permiso de despegar pero el avion se encuentra sobrepasado de peso o de pasajeros");
+		catch (exception* e) {
+			cout << e->what() << endl;
+			cout << "Tiene permiso de despegar pero el avion se encuentra sobrepasado de peso o de pasajeros" << endl;
+		}
 	}
 	else
-		printf("\nNo tiene permiso para despegar ");
+		cout << "No tiene permiso para despegar " << endl;
 }
 
 void cAvion::Aterrizar()
@@ -48,6 +52,20 @@ void cAvion::Aterrizar()
 	}
 	else
 		printf("\nNo tiene permiso de aterrizar");
+}
+
+void cAvion::PedirPermiso(bool PoA, cAeropuerto* destino)
+{
+	if (PoA)
+		destino->DarPermisoDespegue(this);
+	else {
+		try {
+			destino->DarPermisoAterrizar(this);
+		}
+		catch (exception* e) {
+			cout << e->what() << endl;
+		}
+	}
 }
 
 void cAvion::RecibirPermiso(bool permiso)
@@ -67,7 +85,7 @@ bool cAvion::ChequearCargaMaxima()
 	if (this->PesoAct <= this->PesoMax)
 		return true;
 	else
-		return false;
+		throw new exception ("SE_SUPERO_LA_CARGA_MAX"); 
 }
 
 bool cAvion::ChequearCapacidadMaxima()

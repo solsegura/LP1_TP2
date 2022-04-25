@@ -15,6 +15,7 @@ class cListaPasajeros;
 class cFecha;
 
 class cAeropuerto {
+	friend void cAvion::PedirPermiso();
 	string ID;
 	int Capacidad; //aviones
 	cListaAviones* Lista_aviones;

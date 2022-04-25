@@ -24,7 +24,7 @@ class cVuelo {
 	cAvion* Avion;
 	cFecha* FechaHora_Salida; 
 	cFecha* FechaHora_Llegada;
-	string Destino;
+	cAeropuerto* Destino; //aeroparque u otro
 	part_arribo PoA;
 	cListaPasajeros* Pasajeros; //filtro
 
@@ -36,13 +36,14 @@ public:
 	void AgregarPasajero(cPasajero* pasajero);
 	void CambiarPasajero(cPasajero* pasajero_nuevo, cPasajero* pasajero_viejo);
 	void EliminarPasajero(cPasajero* pasajero);
+	void Pedir_Permiso();
 	void SetearAvion();
 	void SetEstado(estado Estado);
 	part_arribo getPoA();
 	cFecha* getFecha_Llegada();
 	cFecha* getFecha_Salida();
 	void SetListaPasajeros(cListaPasajeros* lista);
-	static int getNumeroDeVuelo(); //NUMERO VUELO ES CONST, error en el cpp, deberia ser solo int.
+	int getNumeroDeVuelo(); //antes era static
 
 };
 

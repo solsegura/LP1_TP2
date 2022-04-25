@@ -40,6 +40,14 @@ void cVuelo::EliminarPasajero(cPasajero* pasajero)
 	this->Pasajeros->EliminarPasajero(pasajero);
 }
 
+void cVuelo::Pedir_Permiso()
+{
+	if (this->PoA == partida)
+		Avion->PedirPermiso(true, this->Destino);
+	else
+		Avion->PedirPermiso(false, this->Destino);
+}
+
 void cVuelo::SetearAvion()
 {
 	int peso = 0;
@@ -71,7 +79,7 @@ cFecha* cVuelo::getFecha_Salida()
 
 int cVuelo::getNumeroDeVuelo()
 {
-	return this->NumeroVuelo; //const static, quilombo
+	return this->NumeroVuelo; 
 }
 
 

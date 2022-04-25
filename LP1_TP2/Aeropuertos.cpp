@@ -35,6 +35,7 @@ void cAeropuerto::DarPermisoAterrizar(cAvion* avion)
 		avion->RecibirPermiso(true);  //asignamos true en el permiso de ese avion
 		this->Lista_aviones->AgregarAvion(avion);
 	}
+	else throw new exception("HANGAR_LLENO");
 }
 int cAeropuerto::FiltrarDia(cFecha* dia)
 {
