@@ -37,7 +37,6 @@ public:
 	string getDNI();
 	cFecha* getFecha();
 	cListaEquipaje* getListavalijas();
-
 	cPasajero operator+(cEquipaje& valija_nueva);
 	cPasajero operator-(cEquipaje& valija);
 
@@ -46,7 +45,7 @@ public:
 class cListaPasajeros {
 	friend int cAeropuerto::CantVuelosDia(cFecha* dia);
 	friend int cAeropuerto::FiltrarDia(cFecha* dia); //BRUNOOOOOOOOOOOOO
-	cPasajero** Vector_Pasajeros;  //cada vez que ingreso un pasajero deberia agregarlo en la mega lista de pasajeros ponele creo
+	cPasajero** Vector_Pasajeros;  
 	unsigned int tam, cant_act;
 
 
@@ -59,8 +58,6 @@ public:
 	int Buscar(cPasajero* pasajero);// Retorna la posicion en la que esta el pasajero en la lista o -1 si no esta
 	cListaPasajeros* FiltrarLista(int vuelo);  /// Devuelve una lista de pasajeros filtrada por numero de vuelo
 	int BuscarDNI(string dni);
-
 	unsigned int getCant();
-	cPasajero* getPasajero(int indice);
 	cPasajero* operator[](int indice);
 };

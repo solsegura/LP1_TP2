@@ -16,6 +16,7 @@ cPasajero::cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int a
 
 cPasajero::~cPasajero()
 {
+	delete this->ListaValijas;
 }
 
 void cPasajero::AgregarEquipaje(cEquipaje* valija_nueva)
@@ -44,6 +45,11 @@ cFecha* cPasajero::getFecha()
 	return this->Fecha;
 }
 
+cListaEquipaje* cPasajero::getListavalijas()
+{
+	return this->ListaValijas;
+}
+
 
 
 cPasajero cPasajero::operator+(cEquipaje& valija_nueva)
@@ -62,6 +68,17 @@ cListaPasajeros::cListaPasajeros(int T)
 {
 	this->tam = T;
 	this->cant_act = 0;
+	this->Vector_Pasajeros = new cPasajero * [T];
+	for (int i = 0; i < T; i++)
+		this->Vector_Pasajeros = NULL;
+
+}
+
+cListaPasajeros::~cListaPasajeros()
+{
+	for (int i = 0; i < this->tam; i++)
+		this->Vector_Pasajeros = NULL;
+	delete[] this->Vector_Pasajeros;
 }
 
 
@@ -91,6 +108,11 @@ int cListaPasajeros:: BuscarDNI(string dni) {
 		}
 	}
 	return -1;//si no encuentro, retorna -1
+}
+
+unsigned int cListaPasajeros::getCant()
+{
+	return this->cant_act;
 }
 
 cPasajero* cListaPasajeros::operator[](int indice)

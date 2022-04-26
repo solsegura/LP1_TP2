@@ -2,14 +2,7 @@
 #include "Pasajeros.h"
 #include "Aeropuertos.h"
 #include "Vuelos.h"
-/* peso máximo, para calcular el peso del avión se
-considera la suma del peso humano y el peso total del equipaje, siendo el
-peso humano el peso de los pasajeros. Un pasajero tiene un peso promedio
-de 75kg (se considera lo mismo para todos los pasajeros) y el peso total del
-equipaje incluye todos los equipajes de todos los pasajeros. En este cálculo
-hay que considerar el peso de los 4 integrantes de la tripulación (no llevan
-equipaje).
-*/
+
 
 cAvion::cAvion(string id, int cantmax)
 {
@@ -33,6 +26,7 @@ void cAvion::Despegar()
 			if (this->ChequearCapacidadMaxima() && this->ChequearCargaMaxima()) {  //hacemos los chequeos necesarios
 				this->Estado = volando;  //cambiamos el estado de "en tierra" a "volando" porque ahora el avion despego
 				this->Permiso = false;   //dejamos permiso en false
+				cout << "el avion " << this->ID << " despego " << endl;
 			}
 		}
 		catch (exception* e) {
@@ -49,18 +43,19 @@ void cAvion::Aterrizar()
 	if (this->Permiso == true) {
 		this->Estado = en_tierra;
 		this->Permiso = false;
+		cout << "el avion " << this->ID << " aterrizo " << endl;
 	}
 	else
-		printf("\nNo tiene permiso de aterrizar");
+		cout<<"No tiene permiso de aterrizar"<<endl;
 }
 
-void cAvion::PedirPermiso(bool PoA, cAeropuerto* destino)
+void cAvion::PedirPermiso(bool PoA, cAeropuerto* aeropuerto)  //aeropuerto SIEMPRE va a ser aeroparque
 {
 	if (PoA)
-		destino->DarPermisoDespegue(this);
+		aeropuerto->DarPermisoDespegue(this);
 	else {
 		try {
-			destino->DarPermisoAterrizar(this);
+			aeropuerto->DarPermisoAterrizar(this);
 		}
 		catch (exception* e) {
 			cout << e->what() << endl;
@@ -96,6 +91,16 @@ bool cAvion::ChequearCapacidadMaxima()
 		return false;
 }
 
+void cAvion::setPesoActual(int peso)
+{
+	this->PesoAct = peso;
+}
+
+void cAvion::setCantDePasajeros(int cant)
+{
+	this->CantPasajerosAct = cant;
+}
+
 int cAvion::getCantPasajerosMax()
 {
 	return this->CantPasajerosMax;
@@ -108,6 +113,13 @@ cListaAviones::cListaAviones(int T)
 	this->VectorAviones = new cAvion * [T]; //DELETE
 	for (int i = 0; i < T; i++)
 		this->VectorAviones[i] = NULL;
+}
+
+cListaAviones::~cListaAviones()
+{
+	for (int i = 0; i < this->tam; i++)
+		this->VectorAviones[i] = NULL;
+	delete[] this->VectorAviones;
 }
 
 

@@ -11,7 +11,7 @@ class cAvion;
 class cAeropuerto;
 class cPasajero;
 
-enum estado { on_time, delayed, boarding, flying};
+enum estado { on_time, delayed};
 enum part_arribo { partida, arribo };
 
 class cVuelo {
@@ -19,32 +19,35 @@ class cVuelo {
 	friend class cFecha;
 	friend int cAeropuerto::FiltrarDia(cFecha* dia);
 	static int ContVuelo;   //la idea seria hacerlo como el pampa hizo lo del dni
-	const int NumeroVuelo;
+	const int NumeroVuelo;  //hacemos que el numero de vuelo sea constante ya que no va a variar
 	estado EstadoVuelo;
 	cAvion* Avion;
 	cFecha* FechaHora_Salida; 
 	cFecha* FechaHora_Llegada;
-	cAeropuerto* Destino; //aeroparque u otro
+	string Destino; //aeroparque u otro
+	//cAeropuerto* Salida;
+	//cAeropuerto* Destino; //aeroparque u otro
 	part_arribo PoA;
 	cListaPasajeros* Pasajeros; //filtro
 
 public:
-	cVuelo(cAvion* avion, cFecha* fechasalida, cFecha* fechallegada, string destino, part_arribo poa);
+	//cVuelo(estado estadovuelo, cAvion* avion, cFecha* fechasalida, cFecha* fechallegada, cAeropuerto* salida, cAeropuerto* destino, part_arribo poa);
+	cVuelo(estado estadovuelo, cAvion* avion, cFecha* fechasalida, cFecha* fechallegada,string destino, part_arribo poa);
 	~cVuelo();
 
 	cPasajero* DatosPasajero(string DNI);
 	void AgregarPasajero(cPasajero* pasajero);
 	void CambiarPasajero(cPasajero* pasajero_nuevo, cPasajero* pasajero_viejo);
 	void EliminarPasajero(cPasajero* pasajero);
-	void Pedir_Permiso();
+	void Pedir_Permiso(cAeropuerto* aeropuerto);
 	void SetearAvion();
-	void SetEstado(estado Estado);
+	void SetEstado(estado Estado); //creo que no la usamos
 	part_arribo getPoA();
 	cFecha* getFecha_Llegada();
 	cFecha* getFecha_Salida();
 	void SetListaPasajeros(cListaPasajeros* lista);
 	int getNumeroDeVuelo(); //antes era static
-
+	
 };
 
 class cListaVuelos {
@@ -57,8 +60,9 @@ public:
 	cListaVuelos(int T);
 	~cListaVuelos();
 	void AgregarVuelo(cVuelo* vuelo);
-	void QuitarVuelo(cVuelo* vuelo);
+	//cVuelo* QuitarVuelo(cVuelo* vuelo);     creo que no lo necesitamos
 	void EliminarVuelo(cVuelo* vuelo);
 	int getCantAct();
 	int Buscar(cVuelo* vuelo);
+	cVuelo* operator[](int indice);
 };

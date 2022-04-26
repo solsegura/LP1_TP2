@@ -27,7 +27,7 @@ public:
 	~cAvion();
 	void Despegar();
 	void Aterrizar();
-	void PedirPermiso(bool PoA, cAeropuerto* destino);  //no entiendo que tiene que hacer esta cosa (tal vez con clase friend al aeropuerto?) !!!!!!!!!!!!!!
+	void PedirPermiso(bool PoA, cAeropuerto* aeropuerto);  
 	void RecibirPermiso(bool permiso); //setter de Permiso
 	bool ChequearCargaMaxima();  
 	bool ChequearCapacidadMaxima();
@@ -49,4 +49,5 @@ public:
 	int Buscar(cAvion* avion);
 	int getCant();
 	int getTam();
+	cAvion* operator[](int indice);
 };

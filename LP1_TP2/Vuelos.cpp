@@ -4,15 +4,35 @@
 #include "Vuelos.h"
 #include "Valijas.h"
 #include "cFecha.h"
+//
+//cVuelo::cVuelo(estado estadovuelo, cAvion* avion, cFecha* fechasalida, cFecha* fechallegada, cAeropuerto* salida, cAeropuerto* destino, part_arribo poa): NumeroVuelo(ContVuelo++) //inicializo const con el valor de static
+//{	
+//	this->EstadoVuelo = estadovuelo;
+//	this->Avion = avion;
+//	this->FechaHora_Salida = fechasalida;
+//	this->FechaHora_Llegada = fechallegada;
+//	this->Salida = salida;
+//	this->Destino = destino;
+//	this->PoA = poa;
+//	this->Pasajeros = new cListaPasajeros(this->Avion->getCantPasajerosMax());  //creamos la lista de pasajeros del vuelo en base a la capacidad maxima del avion
+//	ContVuelo++; //sumamos 1 a la cantidad de vuelos totales 
+//}
 
-cVuelo::cVuelo(cAvion* avion, cFecha* fechasalida, cFecha* fechallegada, string destino, part_arribo poa): NumeroVuelo(ContVuelo++) //inicializo const con el valor de static
+cVuelo::cVuelo(estado estadovuelo, cAvion* avion, cFecha* fechasalida, cFecha* fechallegada, string destino, part_arribo poa) : NumeroVuelo(ContVuelo++) //inicializo const con el valor de static
 {
+	this->EstadoVuelo = estadovuelo;
+	this->Avion = avion;
+	this->FechaHora_Salida = fechasalida;
+	this->FechaHora_Llegada = fechallegada;
+	this->Destino = destino;
+	this->PoA = poa;
 	this->Pasajeros = new cListaPasajeros(this->Avion->getCantPasajerosMax());  //creamos la lista de pasajeros del vuelo en base a la capacidad maxima del avion
-	ContVuelo++;
+	ContVuelo++; //sumamos 1 a la cantidad de vuelos totales 
 }
 
 cVuelo::~cVuelo()
 {
+	delete this->Pasajeros;
 	ContVuelo--;
 }
 
@@ -21,7 +41,7 @@ int cVuelo::ContVuelo = 0;
 cPasajero* cVuelo::DatosPasajero(string DNI)
 {
 	int indx = this->Pasajeros->BuscarDNI(DNI);
-	cPasajero* aux = this->Pasajeros->getPasajero(indx);
+	cPasajero* aux = (*(this->Pasajeros))[indx];
 	return aux;
 }
 
@@ -40,12 +60,12 @@ void cVuelo::EliminarPasajero(cPasajero* pasajero)
 	this->Pasajeros->EliminarPasajero(pasajero);
 }
 
-void cVuelo::Pedir_Permiso()
+void cVuelo::Pedir_Permiso(cAeropuerto* aeropuerto)
 {
 	if (this->PoA == partida)
-		Avion->PedirPermiso(true, this->Destino);
+		Avion->PedirPermiso(true, aeropuerto);
 	else
-		Avion->PedirPermiso(false, this->Destino);
+		Avion->PedirPermiso(false, aeropuerto);
 }
 
 void cVuelo::SetearAvion()
@@ -53,13 +73,17 @@ void cVuelo::SetearAvion()
 	int peso = 0;
 	peso+=this->Pasajeros->getCant()*75; //sumamos el peso de los pasajeros tomando 75kg como el peso promedio de una persona
 	for (int i = 0; i < this->Pasajeros->getCant(); i++) {  //recorro la lista de pasajeros y por cada uno entro a su lista de equipaje y sumo el peso de cada valija
-		cPasajero* aux = this->Pasajeros->getPasajero(i);
-		cListaEquipaje* aux2 = aux->getListavalijas();
-		peso += aux2->SumarPeso();
+		cListaEquipaje* aux = (*(this->Pasajeros))[i]->getListavalijas();
+		peso += aux->SumarPeso();
 	}
 	this->Avion->setPesoActual(peso);
 	this->Avion->setCantDePasajeros(this->Pasajeros->getCant());
 
+}
+
+void cVuelo::SetEstado(estado Estado)
+{
+	this->EstadoVuelo = Estado;
 }
 
 part_arribo cVuelo::getPoA()
@@ -77,6 +101,11 @@ cFecha* cVuelo::getFecha_Salida()
 	return this->FechaHora_Salida;
 }
 
+void cVuelo::SetListaPasajeros(cListaPasajeros* lista)
+{
+	this->Pasajeros = lista;
+}
+
 int cVuelo::getNumeroDeVuelo()
 {
 	return this->NumeroVuelo; 
@@ -92,6 +121,13 @@ cListaVuelos::cListaVuelos(int T)
 	this->VectorVuelos = new cVuelo* [T]; //DELETE
 	for (int i = 0; i < T; i++)
 		this->VectorVuelos[i] = NULL;
+}
+
+cListaVuelos::~cListaVuelos()
+{
+	for (int i = 0; i < this->tam; i++)
+		this->VectorVuelos[i] = NULL;
+	delete[] this->VectorVuelos;
 }
 
 

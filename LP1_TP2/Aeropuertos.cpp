@@ -16,6 +16,8 @@ cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPa
 
 cAeropuerto::~cAeropuerto()
 {
+	delete this->Lista_aviones;
+	delete this->Lista_vuelos;
 }
 
 void cAeropuerto::DarPermisoDespegue(cAvion* avion)
@@ -26,17 +28,19 @@ void cAeropuerto::DarPermisoDespegue(cAvion* avion)
 			this->Lista_aviones->EliminarAvion(aux); //lo sacamos de la lista porque va a despegar
 		}
 		else
-			printf("\nEl avion no se encuentra en este aeropuerto");
+			cout << "El avion no se encuentra en este aeropuerto" << endl;
 }
 
 void cAeropuerto::DarPermisoAterrizar(cAvion* avion)
 {
 	if (this->Lista_aviones->getCant() < this->Capacidad) { //reviso que haya lugar en el hangar
 		avion->RecibirPermiso(true);  //asignamos true en el permiso de ese avion
-		this->Lista_aviones->AgregarAvion(avion);
+		this->Lista_aviones->AgregarAvion(avion);  //agregamos el avion a la lista ya que aterrizo
 	}
 	else throw new exception("HANGAR_LLENO");
 }
+
+
 int cAeropuerto::FiltrarDia(cFecha* dia)
 {
 	cListaPasajeros* filtroDia = new cListaPasajeros(this->Lista_pasajeros->getCant()); //lista filtrodia tam. cant act
@@ -72,5 +76,25 @@ int cAeropuerto::CantVuelosDia(cFecha* dia)
 		
 	}
 	return filtroDia->cant_act;
+}
+
+int cAeropuerto::getCapacidad()
+{
+	return this->Capacidad;
+}
+
+void cAeropuerto::AgregarPasajero(cPasajero* pasajero_nuevo)
+{
+	this->Lista_pasajeros->AgregarPasajero(pasajero_nuevo);
+}
+
+void cAeropuerto::AgregarAvion(cAvion* avion_nuevo)
+{
+	this->Lista_aviones->AgregarAvion(avion_nuevo);
+}
+
+void cAeropuerto::AgregarVuelo(cVuelo* vuelo_nuevo)
+{
+	this->Lista_vuelos->AgregarVuelo(vuelo_nuevo);
 }
 
