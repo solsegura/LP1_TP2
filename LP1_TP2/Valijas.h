@@ -2,6 +2,7 @@
 #include <string>
 #include <stdio.h>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -13,7 +14,8 @@ public:
 	cEquipaje(string desc, int peso);
 	~cEquipaje(); 
 	int GetPeso();
-
+	friend ostream& operator<<(ostream& out, const cEquipaje& equipaje);
+	string to_String();
 };
 
 class cListaEquipaje {
@@ -27,7 +29,10 @@ public:
 	void AgregarValija(cEquipaje* valija_nueva);/// Agrega valija_nueva a la lista
 	int getCant();
 	int SumarPeso();
-	cEquipaje* GetValija(int indice);
-	cEquipaje* EliminarValija(cEquipaje* valija);
-	
+	int BuscarEquipaje(cEquipaje* valija);
+	cEquipaje* GetValija(int indice);  //podria ser sobrecarga de [ ]  //igual creo que ni lo usamos
+	void EliminarValija(cEquipaje* valija);
+	friend ostream& operator<<(ostream& out, const cListaEquipaje& lista_equipaje);
+	string to_String();
+
 };

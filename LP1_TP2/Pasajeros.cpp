@@ -24,10 +24,10 @@ void cPasajero::AgregarEquipaje(cEquipaje* valija_nueva)
 	this->ListaValijas->AgregarValija(valija_nueva);
 }
 
-cEquipaje* cPasajero::EliminarEquipaje(cEquipaje* valija)
+void cPasajero::EliminarEquipaje(cEquipaje* valija)
 {
-	cEquipaje* aux = this->ListaValijas->EliminarValija(valija);
-	return aux;
+	 this->ListaValijas->EliminarValija(valija);
+	
 }
 
 int cPasajero::getNVuelo()
@@ -62,6 +62,19 @@ cPasajero cPasajero::operator-(cEquipaje& valija)
 {
 	this->EliminarEquipaje(&valija);
 	return *this;
+}
+
+string cPasajero::to_String()
+{
+	stringstream ss;
+	ss << "  Nombre: " << this->Nombre << endl;
+	ss << "  DNI: " << this->DNI << endl;
+	ss << "  Nacimiento: " << this->Fecha->getFecha() << endl;
+	ss << "  Numero de vuelo: " << to_string(this->Nvuelo) << endl;
+	ss << "  Asiento: " << to_string(this->Asiento) << endl;
+	ss << "  Valijas: " << this->ListaValijas << endl;
+
+	return ss.str();
 }
 
 cListaPasajeros::cListaPasajeros(int T)
@@ -120,6 +133,17 @@ cPasajero* cListaPasajeros::operator[](int indice)
 	return this->Vector_Pasajeros[indice];
 }
 
+string cListaPasajeros::to_String()
+{
+	stringstream ss;
+	ss << "Cantidad de pasajeros: " << to_string(this->cant_act) << endl;
+	for (int i = 0; i < this->cant_act; i++) {
+		ss << "Pasajero " << to_string(i) << " : " << endl;
+		ss << this->Vector_Pasajeros[i]->to_String() << endl;
+	}
+	return ss.str();
+}
+
 cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 {
 	cListaPasajeros* filtro = new cListaPasajeros(this->cant_act); //filtro es la lista nueva 
@@ -144,24 +168,36 @@ cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 
 void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
 {
-	if (this->cant_act < this->tam)
+	if (this->cant_act < this->tam)  //me fijo que haya espacion en la lista
 	{
-		this->Vector_Pasajeros[cant_act] = pasajero;
-		cant_act++;
+		if (this->Buscar(pasajero) == -1) {  //me fijo que el pasajero no este en la lista
+			this->Vector_Pasajeros[cant_act] = pasajero;
+			cant_act++;
+		}
 	}
 }
 
 void cListaPasajeros::EliminarPasajero(cPasajero* pasajero)
 {
-	for (int i = 0; i < this->cant_act; i++) {
-		if (this->Vector_Pasajeros[i] == pasajero) // si encuentro al pasajero
+	int aux = this->Buscar(pasajero);
+		if (aux != -1) // si encuentro al pasajero
 		{
-			this->Vector_Pasajeros[i] = this->Vector_Pasajeros[this->cant_act - 1];
+			this->Vector_Pasajeros[aux] = this->Vector_Pasajeros[this->cant_act - 1];
 			this->Vector_Pasajeros[this->cant_act - 1] = NULL;
 
 		}
-	}
+	
 
 }
 
+ostream& operator<<(ostream& out, cPasajero& pasajero)
+{
+	out << pasajero.to_String();
+	return out;
+}
 
+ostream& operator<<(ostream& out, cListaPasajeros& lista_pasajeros)
+{
+	out << lista_pasajeros.to_String();
+	return out;
+}

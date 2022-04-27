@@ -4,8 +4,9 @@
 #include <iostream>
 #include <string.h>
 #include <string>
+#include <sstream>
 
-//necesitamos declarados los metodos de cAeropuerto para hacerles friend pero si pongo el iclude se muere
+//necesitamos declarados los metodos de cAeropuerto para hacerles friend pero si pongo el iclude se muere opcion:hacer toda la clase friend
 
 using namespace std;
 
@@ -31,14 +32,15 @@ public:
 	cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int asiento, int cant_valijas);
 	~cPasajero();
 	void AgregarEquipaje(cEquipaje* valija_nueva);// Llama  al metodo agregar valija de la clase cListaEquipaje para agregar una valija a la losta del pasajero
-	cEquipaje* EliminarEquipaje(cEquipaje* valija);
+	void EliminarEquipaje(cEquipaje* valija);
 	int getNVuelo();
 	string getDNI();
 	cFecha* getFecha();
 	cListaEquipaje* getListavalijas();
 	cPasajero operator+(cEquipaje& valija_nueva);
 	cPasajero operator-(cEquipaje& valija);
-
+	string to_String();
+	friend ostream& operator<<(ostream& out, const cPasajero& pasajero);
 };
 
 class cListaPasajeros {
@@ -59,4 +61,6 @@ public:
 	int BuscarDNI(string dni);
 	unsigned int getCant();
 	cPasajero* operator[](int indice);
+	string to_String();
+	friend ostream& operator<<(ostream& out, const cListaPasajeros& lista_pasajeros);
 };

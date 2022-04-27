@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string.h>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -64,4 +65,7 @@ public:
 	void AgregarAvion(cAvion* avion_nuevo);  //la usamos para agregar aviones que creamos en el main, despues se eliminan al despegar
 	void AgregarVuelo(cVuelo* vuelo_nuevo);
 	cListaVuelos* GetListaVuelos();
+	friend ostream& operator<<(ostream& out, const cAeropuerto& aeropuerto);
+	string to_String();
+
 };

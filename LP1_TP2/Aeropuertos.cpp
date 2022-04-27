@@ -98,3 +98,26 @@ void cAeropuerto::AgregarVuelo(cVuelo* vuelo_nuevo)
 	this->Lista_vuelos->AgregarVuelo(vuelo_nuevo);
 }
 
+cListaVuelos* cAeropuerto::GetListaVuelos()
+{
+	return this->Lista_vuelos;
+}
+
+string cAeropuerto::to_String()
+{
+	stringstream ss;
+	ss << "ID: " << this->ID << endl;
+	ss << "Capacidad: " << to_string(this->Capacidad) << endl;
+	ss << "______VUELOS_____ " << endl;
+	ss << this->Lista_vuelos << endl;
+	ss << "______AVIONES_____ " << endl;
+	ss << this->Lista_aviones << endl;
+
+	return ss.str();
+}
+
+ostream& operator<<(ostream& out, cAeropuerto& aeropuerto)
+{
+	out << aeropuerto.to_String();
+	return out;
+}

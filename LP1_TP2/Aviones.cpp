@@ -106,6 +106,28 @@ int cAvion::getCantPasajerosMax()
 	return this->CantPasajerosMax;
 }
 
+string cAvion::getID()
+{
+	return this->ID;
+}
+
+string cAvion::to_String()
+{
+	stringstream ss;
+	ss << "ID: " << this->ID;
+	ss << "Cantidad maxima de pasajeros: " << to_string(this->CantPasajerosMax) << "Cant actual: " << to_string(this->CantPasajerosAct) << endl;
+	ss << "Carga maxima: " << to_string(this->PesoMax) << "Carga actual: " << to_string(this->PesoAct) << endl;
+	if (this->Permiso)
+		ss << "Permiso: Si" << endl;
+	else
+		ss << "Permiso: No" << endl;
+	if (this->Estado == volando)
+		ss << "Estado: volando" << endl;
+	else if (this->Estado == en_tierra)
+		ss << "Estado: en tierra" << endl;
+	return ss.str();
+}
+
 cListaAviones::cListaAviones(int T)
 {
 	this->tam = T;
@@ -142,7 +164,24 @@ int cListaAviones::getCant()
 int cListaAviones::getTam()
 {
 	return this->tam;
-}  
+}
+
+cAvion* cListaAviones::operator[](int indice)
+{
+	return this->VectorAviones[indice];
+}
+
+string cListaAviones::to_String()
+{
+	stringstream ss;
+	ss << "Cantidad de aviones: " << to_string(this->cant_act) << endl;
+	for (int i = 0; i < this->cant_act; i++) {
+		ss << "Pasajero " << to_string(i) << " : " << endl;
+		ss << this->VectorAviones[i]->to_String() << endl;
+	}
+	return ss.str();
+	return string();
+}
 
 
 
@@ -181,3 +220,14 @@ int cListaAviones::Buscar(cAvion* avion)
 		
 }
 
+ostream& operator<<(ostream& out, cAvion& avion)
+{
+	out << avion.to_String();
+	return out;
+}
+
+ostream& operator<<(ostream& out, cListaAviones& lista_aviones)
+{
+	out << lista_aviones.to_String();
+	return out;
+}

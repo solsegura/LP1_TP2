@@ -2,6 +2,8 @@
 #include <string>
 #include <stdio.h>
 #include <iostream>
+#include <sstream>
+
 
 class cVuelo;
 class cAeropuerto;
@@ -36,6 +38,9 @@ public:
 	void setPesoActual(int peso);
 	void setCantDePasajeros(int cant);
 	int getCantPasajerosMax();
+	string getID();
+	string to_String();
+	friend ostream& operator<<(ostream& out, const cAvion& avion);
 };
 
 class cListaAviones {
@@ -52,4 +57,7 @@ public:
 	int getCant();
 	int getTam();
 	cAvion* operator[](int indice);
+	friend ostream& operator<<(ostream& out, const cListaAviones& lista_aviones);
+	string to_String();
+
 };

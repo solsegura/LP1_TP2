@@ -111,6 +111,24 @@ int cVuelo::getNumeroDeVuelo()
 	return this->NumeroVuelo; 
 }
 
+string cVuelo::to_String()
+{
+	stringstream ss;
+	ss <<"Numero de vuelo: " <<to_string(this->NumeroVuelo) << endl;
+	if (this->EstadoVuelo == on_time)
+		ss << "Estado del vuelo: on time" << endl;
+	if (this->EstadoVuelo == delayed)
+		ss << "Estado del vuelo: delayed" << endl;
+	ss << "Avion: "<<this->Avion->getID();
+	ss << "Fecha de salida: " << this->FechaHora_Salida << endl;  //uso la sobrecarga de fecha
+	ss << "Fecha de llegada: " << this->FechaHora_Llegada << endl;
+	ss << "Destino: " << this->Destino;
+	ss << "PASAJEROS DEL VUELO " << endl;
+	ss << this->Pasajeros;  
+
+	return ss.str();
+}
+
 
 
 
@@ -177,4 +195,10 @@ void cListaVuelos::EliminarVuelo(cVuelo* vuelo)
 	}
 
 
+}
+
+ostream& operator<<(ostream& out, cVuelo& vuelo)
+{
+	out << vuelo.to_String();
+	return out;
 }

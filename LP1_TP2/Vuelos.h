@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -30,6 +31,7 @@ class cVuelo {
 	part_arribo PoA;
 	cListaPasajeros* Pasajeros; //filtro
 
+
 public:
 	//cVuelo(estado estadovuelo, cAvion* avion, cFecha* fechasalida, cFecha* fechallegada, cAeropuerto* salida, cAeropuerto* destino, part_arribo poa);
 	cVuelo(estado estadovuelo, cAvion* avion, cFecha* fechasalida, cFecha* fechallegada,string destino, part_arribo poa);
@@ -47,6 +49,8 @@ public:
 	cFecha* getFecha_Salida();
 	void SetListaPasajeros(cListaPasajeros* lista);
 	int getNumeroDeVuelo(); //antes era static
+	friend ostream& operator<<(ostream& out, const cVuelo& vuelo);
+	string to_String();
 	
 };
 
@@ -65,4 +69,6 @@ public:
 	int getCantAct();
 	int Buscar(cVuelo* vuelo);
 	cVuelo* operator[](int indice);
+	string to_String();
+	friend ostream& operator<<(ostream& out, const cListaVuelos& vuelo);
 };

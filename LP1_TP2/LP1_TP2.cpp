@@ -90,6 +90,14 @@ int main()
 
 	for(int i=0;i<Aeroparque->GetListaVuelos()->getCantAct();i++)
 		(*(Aeroparque->GetListaVuelos()))[i]->Pedir_Permiso(Aeroparque); //todos los vuelos piden su permiso correspondiente y si lo obtienen van aterrizando/ despegando
+	
+	system("pause");
+	system("cls");
 
+	cout << "--------AEROPUERTO--------" << endl << endl;
+	cout << Aeroparque;
+	system("pause");
+	system("cls");
 
+	
 }

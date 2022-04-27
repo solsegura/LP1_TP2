@@ -16,6 +16,14 @@ int cEquipaje::GetPeso()
 	return this->Peso;
 }
 
+string cEquipaje::to_String()
+{
+	stringstream ss;
+	ss << "  Descripcion: " << this->Descripcion << endl;
+	ss << "  Peso: " << to_string(this->Peso) << endl;
+	return ss.str();
+}
+
 cListaEquipaje::cListaEquipaje(int T)
 {
 	this->tam = T;
@@ -50,17 +58,26 @@ void cListaEquipaje::AgregarValija(cEquipaje* valija_nueva)
 	}
 }
 
-cEquipaje* cListaEquipaje::EliminarValija(cEquipaje* valija)
+void cListaEquipaje::EliminarValija(cEquipaje* valija)
 {
-	cEquipaje* aux=NULL;
-	for (int i = 0; i < this->cant_act; i++) {
-		if (this->Vector_Equipaje[i] == valija) {
-			aux = this->Vector_Equipaje[i];
-			this->Vector_Equipaje[i] = this->Vector_Equipaje[this->cant_act - 1]; //reeemplazo el que voy a borrar con el ultimo de la lista
+	int indice = BuscarEquipaje(valija);
+		if (indice!=-1) {
+			this->Vector_Equipaje[indice] = this->Vector_Equipaje[this->cant_act - 1]; //reeemplazo el que voy a borrar con el ultimo de la lista
 			this->Vector_Equipaje[this->cant_act - 1] = NULL; //borro el ultimo de la lista porque ya lo deje en otro lado
-			return aux;
 		}
+	
+}
+
+string cListaEquipaje::to_String()
+{
+	stringstream ss;
+	ss << "Cantidad de valijas: " << to_string(this->cant_act) << endl;
+	for (int i = 0; i < this->cant_act; i++) {
+		ss << "Valija " << to_string(i) << " : " << endl;
+		ss << this->Vector_Equipaje[i]->to_String() << endl;
 	}
+	return ss.str();
+	return string();
 }
 
 int cListaEquipaje::SumarPeso()
@@ -72,7 +89,32 @@ int cListaEquipaje::SumarPeso()
 	return peso;
 }
 
+int cListaEquipaje::BuscarEquipaje(cEquipaje* valija)
+{
+	for (int i = 0; i < this->cant_act; i++)
+		if (this->Vector_Equipaje[i] == valija)
+			return i;
+	return -1;  //si no la encuentro devuelvo -1
+}
+
+cEquipaje* cListaEquipaje::GetValija(int indice)
+{
+	return this->Vector_Equipaje[indice];
+}
+
 int cListaEquipaje::getCant()
 {
 	return this->cant_act;
+}
+
+ostream& operator<<(ostream& out, cEquipaje& equipaje)
+{
+	out << equipaje.to_String();
+	return out;
+}
+
+ostream& operator<<(ostream& out, cListaEquipaje& lista_equipaje)
+{
+	out << lista_equipaje.to_String();
+	return out;
 }
