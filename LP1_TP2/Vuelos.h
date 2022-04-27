@@ -11,7 +11,7 @@ class cAvion;
 class cAeropuerto;
 class cPasajero;
 
-enum estado { on_time, delayed};
+enum estado { on_time, delayed };
 enum part_arribo { partida, arribo };
 
 class cVuelo {

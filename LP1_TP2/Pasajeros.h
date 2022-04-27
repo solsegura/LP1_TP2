@@ -5,6 +5,8 @@
 #include <string.h>
 #include <string>
 
+//necesitamos declarados los metodos de cAeropuerto para hacerles friend pero si pongo el iclude se muere
+
 using namespace std;
 
 class cVuelo;
@@ -14,9 +16,6 @@ class cListaEquipaje;
 class cEquipaje;
 class cFecha;
 
-/*Un Pasajero que tiene un DNI, su nombre, la fecha, número de vuelo, asiento, lista
-de valijas que transporta (y el peso de cada una). Además, el método
-AgregarEquipaje que chequee que el equipaje total no supere los 25 kg por persona.*/
 
 class cPasajero {
 	friend int cAeropuerto::FiltrarDia(cFecha* dia);

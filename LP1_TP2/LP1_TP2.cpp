@@ -7,6 +7,8 @@
 #include <iostream>
 #define MAX_PERSONAS 50
 
+using namespace std;
+
 string lista_destino[5] = { "Jujuy","Cordoba", "Ushuaia", "Mendoza","Aeroparque" };
 
 int main()

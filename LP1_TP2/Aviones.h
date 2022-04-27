@@ -7,10 +7,12 @@ class cVuelo;
 class cAeropuerto;
 class cPasajero;
 
+using namespace std;
+
 /*Un Avión que tiene un ID único, cantidad de pasajeros que permite, cantidad actual,
 peso máximo que puede transportar en total. El avión puede despegar, aterrizar,
 pedir permiso y recibir permiso tanto para aterrizar como para despegar*/
-enum estado{ volando, en_tierra};
+enum estadoAvion { volando, en_tierra};
 
 class cAvion {
 	string ID;
@@ -19,7 +21,7 @@ class cAvion {
 	int PesoMax;
 	int PesoAct;
 	bool Permiso;
-	estado Estado;
+	estadoAvion Estado;
 
 
 public:
