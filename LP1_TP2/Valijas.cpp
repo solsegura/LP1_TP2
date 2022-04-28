@@ -1,4 +1,9 @@
+#include "Aviones.h"
+#include "Pasajeros.h"
+#include "Aeropuertos.h"
+#include "Vuelos.h"
 #include "Valijas.h"
+#include "cFecha.h"
 
 cEquipaje::cEquipaje(string desc, int peso)
 {

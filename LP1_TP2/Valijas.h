@@ -5,6 +5,13 @@
 #include <sstream>
 
 using namespace std;
+class cVuelo;
+class cAvion;
+class cPasajero;
+class cListaAviones;
+class cListaVuelos;
+class cListaPasajeros;
+class cFecha;
 
 class cEquipaje {
 	string Descripcion;

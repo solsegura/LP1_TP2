@@ -6,8 +6,11 @@
 
 
 class cVuelo;
-class cAeropuerto;
 class cPasajero;
+class cListaVuelos;
+class cListaPasajeros;
+class cAeropuerto;
+class cFecha;
 
 using namespace std;
 

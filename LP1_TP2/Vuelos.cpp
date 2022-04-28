@@ -166,6 +166,21 @@ int cListaVuelos::Buscar(cVuelo* vuelo)
 	return -1;//Retorno -1 en caso de no encontrarlo
 }
 
+cVuelo* cListaVuelos::operator[](int indice)
+{
+	return this->VectorVuelos[indice];
+}
+
+string cListaVuelos::to_String()
+{
+	stringstream ss;
+	ss << "Cantidad de vuelos: " << this->cant_act << endl;
+	ss << "VUELOS" << endl;
+	for (int i = 0; i < this->cant_act; i++)
+		ss << this->VectorVuelos[i]->to_String();
+	return ss.str();
+}
+
 void cListaVuelos::AgregarVuelo(cVuelo* vuelo)
 {
 	if (this->cant_act < this->tam)
@@ -198,6 +213,12 @@ void cListaVuelos::EliminarVuelo(cVuelo* vuelo)
 }
 
 ostream& operator<<(ostream& out, cVuelo& vuelo)
+{
+	out << vuelo.to_String();
+	return out;
+}
+
+ostream& operator<<(ostream& out, cListaVuelos& vuelo)
 {
 	out << vuelo.to_String();
 	return out;

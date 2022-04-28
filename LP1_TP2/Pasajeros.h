@@ -19,7 +19,8 @@ class cFecha;
 
 
 class cPasajero {
-	friend int cAeropuerto::FiltrarDia(cFecha* dia);
+	//friend int cAeropuerto::FiltrarDia(cFecha* dia);
+	friend class cAeropuerto;
 	friend class cListaPasajeros;
 	string DNI;
 	string Nombre;
@@ -44,8 +45,9 @@ public:
 };
 
 class cListaPasajeros {
-	friend int cAeropuerto::CantVuelosDia(cFecha* dia);
-	friend int cAeropuerto::FiltrarDia(cFecha* dia); //BRUNOOOOOOOOOOOOO
+	friend class cAeropuerto;
+	//friend int cAeropuerto::CantVuelosDia(cFecha* dia);
+	//friend int cAeropuerto::FiltrarDia(cFecha* dia); 
 	cPasajero** Vector_Pasajeros;  
 	unsigned int tam, cant_act;
 

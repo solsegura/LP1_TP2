@@ -4,7 +4,6 @@
 #include "Vuelos.h"
 #include "Valijas.h"
 #include "cFecha.h"
-#include <iostream>
 #define MAX_PERSONAS 50
 
 using namespace std;

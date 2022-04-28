@@ -12,6 +12,7 @@ cPasajero::cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int a
 	this->Nvuelo = nvuelo;
 	this->Asiento = asiento;
 	this->ListaValijas = new cListaEquipaje(cant_valijas);
+	//this->Fecha = NULL;
 }
 
 cPasajero::~cPasajero()
@@ -165,16 +166,28 @@ cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 }*/
 
 
+//
+//void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
+//{
+//	if (this->cant_act < this->tam)  //me fijo que haya espacion en la lista
+//	{
+//		if (this->Buscar(pasajero) == -1) {  //me fijo que el pasajero no este en la lista
+//			cout << "pepe";
+//			this->Vector_Pasajeros[cant_act] = pasajero;
+//			cant_act++;
+//		}
+//	}
+//}
 
 void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
 {
-	if (this->cant_act < this->tam)  //me fijo que haya espacion en la lista
-	{
-		if (this->Buscar(pasajero) == -1) {  //me fijo que el pasajero no este en la lista
-			this->Vector_Pasajeros[cant_act] = pasajero;
+	for (unsigned int i = 0; i < this->tam; i++) {
+		if (this->Vector_Pasajeros[i] == NULL) {
+			this->Vector_Pasajeros[i] = pasajero;
 			cant_act++;
 		}
-	}
+	} 
+
 }
 
 void cListaPasajeros::EliminarPasajero(cPasajero* pasajero)

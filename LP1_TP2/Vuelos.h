@@ -7,10 +7,11 @@
 
 using namespace std;
 
-class cFecha;
 class cAvion;
-class cAeropuerto;
 class cPasajero;
+class cListaAviones;
+class cListaPasajeros;
+class cFecha;
 
 enum estado { on_time, delayed };
 enum part_arribo { partida, arribo };

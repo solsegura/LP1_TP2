@@ -2,6 +2,8 @@
 #include "Pasajeros.h"
 #include "Aeropuertos.h"
 #include "Vuelos.h"
+#include "Valijas.h"
+#include "cFecha.h"
 
 
 cAvion::cAvion(string id, int cantmax)
