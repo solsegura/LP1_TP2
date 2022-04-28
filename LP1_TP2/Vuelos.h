@@ -17,6 +17,7 @@ enum estado { on_time, delayed };
 enum part_arribo { partida, arribo };
 
 class cVuelo {
+	friend float cAeropuerto::PorcentajeEnHorario();
 	friend int cAeropuerto::CantVuelosDia(cFecha* dia);
 	friend class cFecha;
 	friend int cAeropuerto::FiltrarDia(cFecha* dia);
@@ -58,6 +59,7 @@ public:
 class cListaVuelos {
 	friend int cAeropuerto::CantVuelosDia(cFecha* dia);
 	friend int cAeropuerto::FiltrarDia(cFecha* dia);
+	friend float cAeropuerto::PorcentajeEnHorario();
 	cVuelo** VectorVuelos;
 	unsigned int tam, cant_act;
 

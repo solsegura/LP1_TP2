@@ -12,7 +12,7 @@ cPasajero::cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int a
 	this->Nvuelo = nvuelo;
 	this->Asiento = asiento;
 	this->ListaValijas = new cListaEquipaje(cant_valijas);
-	//this->Fecha = NULL;
+	this->Fecha = fecha;
 }
 
 cPasajero::~cPasajero()
@@ -84,7 +84,7 @@ cListaPasajeros::cListaPasajeros(int T)
 	this->cant_act = 0;
 	this->Vector_Pasajeros = new cPasajero * [T];
 	for (int i = 0; i < T; i++)
-		this->Vector_Pasajeros = NULL;
+		this->Vector_Pasajeros[i] = NULL;
 
 }
 
@@ -185,6 +185,7 @@ void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
 		if (this->Vector_Pasajeros[i] == NULL) {
 			this->Vector_Pasajeros[i] = pasajero;
 			cant_act++;
+			return;
 		}
 	} 
 

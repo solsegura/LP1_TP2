@@ -68,4 +68,6 @@ public:
 	friend ostream& operator<<(ostream& out, const cAeropuerto& aeropuerto);
 	string to_String();
 
+	float PorcentajeEnHorario();
+
 };

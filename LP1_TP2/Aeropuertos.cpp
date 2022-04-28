@@ -116,6 +116,18 @@ string cAeropuerto::to_String()
 	return ss.str();
 }
 
+float cAeropuerto::PorcentajeEnHorario()
+{
+	float cont = 0;
+	for (int i = 0; i < this->Lista_vuelos->cant_act; i++) {
+		if ((*(this->Lista_vuelos))[i]->EstadoVuelo == on_time)
+			cont++;
+	}
+
+	cont = cont * 100 /(float) this->Lista_vuelos->cant_act;
+	return cont;
+}
+
 ostream& operator<<(ostream& out, cAeropuerto& aeropuerto)
 {
 	out << aeropuerto.to_String();

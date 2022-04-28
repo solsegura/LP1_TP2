@@ -53,7 +53,7 @@ int main()
 	
 	
 	*Pasajero1 + *Valija1;  //los pasajeros agregan su equipaje
-	*Pasajero1 + *Valija1;
+	*Pasajero1 + *Valija1;  //entre estas lineas se rompe listaEquipaje de los pasajeros entrando al destructor de pasajero
 	*Pasajero2 + *Valija4; //cambiar con sobrecarga
 	*Pasajero2 + *Valija2;
 	*Pasajero3 + *Valija1;

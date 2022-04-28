@@ -40,15 +40,9 @@ cListaEquipaje::cListaEquipaje(int T)
 
 cListaEquipaje::~cListaEquipaje()
 {
-	if (this->Vector_Equipaje != NULL) {
-		for (int i = 0; i < this->cant_act; i++) {
-			if (this->Vector_Equipaje[i] != NULL) {
-				delete[]this->Vector_Equipaje;
-				this->Vector_Equipaje = NULL;
-			}
-		}
-
-	}
+	for (int i = 0; i < this->tam; i++)
+		this->Vector_Equipaje = NULL;
+	delete[] this->Vector_Equipaje;
 }
 
 void cListaEquipaje::AgregarValija(cEquipaje* valija_nueva)
