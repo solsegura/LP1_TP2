@@ -49,7 +49,8 @@ void cListaEquipaje::AgregarValija(cEquipaje* valija_nueva)
 {
 	if (this->cant_act < this->tam) { //tam= max
 		this->Vector_Equipaje[cant_act] = valija_nueva;
-		cant_act++;
+		this->cant_act++;
+		cout << to_string(this->cant_act)<<endl;
 	}
 	if (this->SumarPeso() > 25) {   //chequeamos que al agregar la valija no se pase del peso maximo
 		this->EliminarValija(valija_nueva);
@@ -63,9 +64,10 @@ void cListaEquipaje::EliminarValija(cEquipaje* valija)
 		if (indice!=-1) {
 			this->Vector_Equipaje[indice] = this->Vector_Equipaje[this->cant_act - 1]; //reeemplazo el que voy a borrar con el ultimo de la lista
 			this->Vector_Equipaje[this->cant_act - 1] = NULL; //borro el ultimo de la lista porque ya lo deje en otro lado
+			this->cant_act--;
 		}
-	
 }
+		
 
 string cListaEquipaje::to_String()
 {
