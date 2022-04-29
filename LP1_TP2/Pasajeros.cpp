@@ -71,10 +71,10 @@ string cPasajero::to_String()
 	stringstream ss;
 	ss << "  Nombre: " << this->Nombre << endl;
 	ss << "  DNI: " << this->DNI << endl;
-	ss << "  Nacimiento: " << this->Fecha->getFecha() << endl;
+	ss << "  Nacimiento: " << this->Fecha->getFecha();
 	ss << "  Numero de vuelo: " << to_string(this->Nvuelo) << endl;
 	ss << "  Asiento: " << to_string(this->Asiento) << endl;
-	ss << "  Valijas: " << (*(this->ListaValijas)) << endl;
+	ss <<  (*(this->ListaValijas)) << endl;
 
 	return ss.str();
 }
@@ -138,9 +138,10 @@ cPasajero* cListaPasajeros::operator[](int indice)
 string cListaPasajeros::to_String()
 {
 	stringstream ss;
-	ss << "Cantidad de pasajeros: " << to_string(this->cant_act) << endl;
+	ss << "Cantidad de pasajeros: " << to_string(this->cant_act) << endl << endl;
 	for (int i = 0; i < this->cant_act; i++) {
-		ss << "Pasajero " << to_string(i) << " : " << endl;
+		int aux = i + 1;
+		ss<<"___________" << endl << "Pasajero nro " << to_string(aux) << ": " << endl;
 		ss << this->Vector_Pasajeros[i]->to_String() << endl;
 	}
 	return ss.str();

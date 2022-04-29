@@ -117,16 +117,16 @@ string cAvion::to_String()
 {
 	stringstream ss;
 	ss << "ID: " << this->ID << endl;
-	ss << "Cantidad maxima de pasajeros: " << to_string(this->CantPasajerosMax) << "Cant actual: " << to_string(this->CantPasajerosAct) << endl;
-	ss << "Carga maxima: " << to_string(this->PesoMax) << "Carga actual: " << to_string(this->PesoAct) << endl;
+	ss << "Cantidad maxima de pasajeros: " << to_string(this->CantPasajerosMax) << endl << "Cantidad actual: "  << to_string(this->CantPasajerosAct) << endl;
+	ss << "Carga maxima: " << to_string(this->PesoMax) << endl << "Carga actual: " << to_string(this->PesoAct) << endl;
 	if (this->Permiso)
-		ss << "Permiso: Si" << endl;
+		ss << "Permiso: Si." << endl;
 	else
-		ss << "Permiso: No" << endl;
+		ss << "Permiso: No." << endl;
 	if (this->Estado == volando)
-		ss << "Estado: volando" << endl;
+		ss << "Estado: Volando." << endl;
 	else if (this->Estado == en_tierra)
-		ss << "Estado: en tierra" << endl;
+		ss << "Estado: En tierra." << endl;
 	return ss.str();
 }
 
@@ -178,7 +178,7 @@ string cListaAviones::to_String()
 	stringstream ss;
 	ss << "Cantidad de aviones: " << to_string(this->cant_act) << endl;
 	for (int i = 0; i < this->cant_act; i++) {
-		ss << "Pasajero " << to_string(i) << " : " << endl;
+		ss << "Avion nro. " << to_string(i) << " : " << endl;
 		ss << this->VectorAviones[i]->to_String() << endl;
 	}
 	return ss.str();

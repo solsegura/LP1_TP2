@@ -110,7 +110,7 @@ int main()
 	system("pause");
 	system("cls");
 
-
+	cout << "P" << to_string(Aeroparque->PorcentajeEnHorario());
 
 
 	//DELETES

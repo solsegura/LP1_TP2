@@ -27,7 +27,7 @@ cVuelo::cVuelo(estado estadovuelo, cAvion* avion, cFecha* fechasalida, cFecha* f
 	this->Destino = destino;
 	this->PoA = poa;
 	this->Pasajeros = new cListaPasajeros(this->Avion->getCantPasajerosMax());  //creamos la lista de pasajeros del vuelo en base a la capacidad maxima del avion
-	ContVuelo++; //sumamos 1 a la cantidad de vuelos totales 
+	//ContVuelo++; //sumamos 1 a la cantidad de vuelos totales 
 }
 
 cVuelo::~cVuelo()
@@ -114,16 +114,16 @@ int cVuelo::getNumeroDeVuelo()
 string cVuelo::to_String()
 {
 	stringstream ss;
-	ss <<"Numero de vuelo: " <<to_string(this->NumeroVuelo) << endl;
+	ss << endl <<"---------- NUMERO DE VUELO:  " <<to_string(this->NumeroVuelo) << " -----------" << endl;
 	if (this->EstadoVuelo == on_time)
-		ss << "Estado del vuelo: on time" << endl;
+		ss << "Estado del vuelo: On time" << endl;
 	if (this->EstadoVuelo == delayed)
-		ss << "Estado del vuelo: delayed" << endl;
-	ss << "Avion: "<<this->Avion->getID();
-	ss << "Fecha de salida: " << (*(this->FechaHora_Salida)) << endl;  //uso la sobrecarga de fecha
-	ss << "Fecha de llegada: " << (*(this->FechaHora_Llegada)) << endl;
-	ss << "Destino: " << this->Destino << endl;
-	ss << "-----PASAJEROS DEL VUELO----- " << endl;
+		ss << "Estado del vuelo: Delayed" << endl;
+	ss << "Avion: "<<this->Avion->getID() << endl;
+	ss << "Fecha de salida: " << (*(this->FechaHora_Salida));  //uso la sobrecarga de fecha
+	ss << "Fecha de llegada: " << (*(this->FechaHora_Llegada));
+	ss << "Destino: " << this->Destino << endl << endl;
+	ss << "  PASAJEROS DEL VUELO "<<to_string(this->NumeroVuelo)<< endl << endl;
 	ss << (*(this->Pasajeros));  
 
 	return ss.str();
@@ -174,10 +174,9 @@ cVuelo* cListaVuelos::operator[](int indice)
 string cListaVuelos::to_String()
 {
 	stringstream ss;
-	ss << "Cantidad de vuelos: " << this->cant_act << endl;
-	ss << "------VUELOS------" << endl;
+	ss << endl << "Cantidad de vuelos: " << this->cant_act << endl;
 	for (int i = 0; i < this->cant_act; i++)
-		ss << this->VectorVuelos[i]->to_String();
+		ss << this->VectorVuelos[i]->to_String() << endl;
 	return ss.str();
 }
 

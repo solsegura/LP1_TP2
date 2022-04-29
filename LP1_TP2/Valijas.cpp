@@ -24,9 +24,9 @@ int cEquipaje::GetPeso()
 string cEquipaje::to_String()
 {
 	stringstream ss;
-	ss << "  Descripcion: " << this->Descripcion << endl;
-	ss << "  Peso: " << to_string(this->Peso) << endl;
-	return ss.str();
+	ss << endl << "  Descripcion: " << this->Descripcion << endl;
+	ss << "  Peso: " << to_string(this->Peso)<< "kg." << endl;
+	return ss.str(); //.str convierte a string el ss
 }
 
 cListaEquipaje::cListaEquipaje(int T)
@@ -53,7 +53,7 @@ void cListaEquipaje::AgregarValija(cEquipaje* valija_nueva)
 	}
 	if (this->SumarPeso() > 25) {   //chequeamos que al agregar la valija no se pase del peso maximo
 		this->EliminarValija(valija_nueva);
-		cout << "No se puede agregar la valija porque sobrepasa el total de 25kg" << endl;
+		cout << " No se pudo agregar a su lista de equipaje el siguiente elemento porque sobrepasa el total de 25kg." << valija_nueva->to_String() << endl << endl;
 	}
 }
 
@@ -71,13 +71,13 @@ void cListaEquipaje::EliminarValija(cEquipaje* valija)
 string cListaEquipaje::to_String()
 {
 	stringstream ss;
-	ss << "Cantidad de valijas: " << to_string(this->cant_act) << endl;
+	ss << "  Cantidad de valijas: " << to_string(this->cant_act) << endl;
 	for (int i = 0; i < this->cant_act; i++) {
-		ss << "Valija " << to_string(i) << " : " << endl;
+		int aux = i + 1;
+		ss << endl << "Valija " << to_string(aux) << " : " << endl;
 		ss << this->Vector_Equipaje[i]->to_String() << endl;
 	}
 	return ss.str();
-	return string();
 }
 
 int cListaEquipaje::SumarPeso()
