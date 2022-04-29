@@ -21,7 +21,7 @@ public:
 	cEquipaje(string desc, int peso);
 	~cEquipaje(); 
 	int GetPeso();
-	friend ostream& operator<<(ostream& out, const cEquipaje& equipaje);
+	friend ostream& operator<<(ostream& out, cEquipaje& equipaje);
 	string to_String();
 };
 
@@ -39,7 +39,7 @@ public:
 	int BuscarEquipaje(cEquipaje* valija);
 	cEquipaje* GetValija(int indice);  //podria ser sobrecarga de [ ]  //igual creo que ni lo usamos
 	void EliminarValija(cEquipaje* valija);
-	friend ostream& operator<<(ostream& out, const cListaEquipaje& lista_equipaje);
+	friend ostream& operator<<(ostream& out, cListaEquipaje& lista_equipaje);
 	string to_String();
 
 };

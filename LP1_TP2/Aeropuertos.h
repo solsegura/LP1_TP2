@@ -90,5 +90,5 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	float PorcentajeEnHorario();
-	friend ostream& operator<<(ostream& out, const cAeropuerto& aeropuerto);
+	friend ostream& operator<<(ostream& out, cAeropuerto& aeropuerto);
 };

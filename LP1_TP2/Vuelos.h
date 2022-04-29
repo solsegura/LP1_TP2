@@ -51,7 +51,7 @@ public:
 	cFecha* getFecha_Salida();
 	void SetListaPasajeros(cListaPasajeros* lista);
 	int getNumeroDeVuelo(); //antes era static
-	friend ostream& operator<<(ostream& out, const cVuelo& vuelo);
+	friend ostream& operator<<(ostream& out, cVuelo& vuelo);
 	string to_String();
 	
 };
@@ -73,5 +73,5 @@ public:
 	int Buscar(cVuelo* vuelo);
 	cVuelo* operator[](int indice);
 	string to_String();
-	friend ostream& operator<<(ostream& out, const cListaVuelos& vuelo);
+	friend ostream& operator<<(ostream& out, cListaVuelos& vuelo);
 };

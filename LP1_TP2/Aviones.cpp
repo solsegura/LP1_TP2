@@ -116,7 +116,7 @@ string cAvion::getID()
 string cAvion::to_String()
 {
 	stringstream ss;
-	ss << "ID: " << this->ID;
+	ss << "ID: " << this->ID << endl;
 	ss << "Cantidad maxima de pasajeros: " << to_string(this->CantPasajerosMax) << "Cant actual: " << to_string(this->CantPasajerosAct) << endl;
 	ss << "Carga maxima: " << to_string(this->PesoMax) << "Carga actual: " << to_string(this->PesoAct) << endl;
 	if (this->Permiso)
@@ -182,7 +182,6 @@ string cListaAviones::to_String()
 		ss << this->VectorAviones[i]->to_String() << endl;
 	}
 	return ss.str();
-	return string();
 }
 
 

@@ -43,7 +43,7 @@ public:
 	int getCantPasajerosMax();
 	string getID();
 	string to_String();
-	friend ostream& operator<<(ostream& out, const cAvion& avion);
+	friend ostream& operator<<(ostream& out, cAvion& avion);
 };
 
 class cListaAviones {
@@ -60,7 +60,7 @@ public:
 	int getCant();
 	int getTam();
 	cAvion* operator[](int indice);
-	friend ostream& operator<<(ostream& out, const cListaAviones& lista_aviones);
+	friend ostream& operator<<(ostream& out, cListaAviones& lista_aviones);
 	string to_String();
 
 };

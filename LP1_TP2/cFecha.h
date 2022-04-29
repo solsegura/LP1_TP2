@@ -17,7 +17,7 @@ public:
 	~cFecha();
 
 	
-	friend ostream& operator<<(ostream& out, const cFecha& fecha);
+	friend ostream& operator<<(ostream& out, cFecha& fecha);
 	string getFecha();
 };
 

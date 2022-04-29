@@ -108,9 +108,9 @@ string cAeropuerto::to_String()
 	ss << "ID: " << this->ID << endl;
 	ss << "Capacidad: " << to_string(this->Capacidad) << endl;
 	ss << "______VUELOS_____ " << endl;
-	ss << this->Lista_vuelos << endl;
+	ss << (*(this->Lista_vuelos)) << endl;
 	ss << "______AVIONES_____ " << endl;
-	ss << this->Lista_aviones << endl;
+	ss << (*(this->Lista_aviones)) << endl;
 
 	return ss.str();
 }

@@ -74,7 +74,7 @@ string cPasajero::to_String()
 	ss << "  Nacimiento: " << this->Fecha->getFecha() << endl;
 	ss << "  Numero de vuelo: " << to_string(this->Nvuelo) << endl;
 	ss << "  Asiento: " << to_string(this->Asiento) << endl;
-	ss << "  Valijas: " << this->ListaValijas << endl;
+	ss << "  Valijas: " << (*(this->ListaValijas)) << endl;
 
 	return ss.str();
 }

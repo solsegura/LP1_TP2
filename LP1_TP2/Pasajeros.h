@@ -40,7 +40,7 @@ public:
 	cPasajero operator+(cEquipaje& valija_nueva);
 	cPasajero operator-(cEquipaje& valija);
 	string to_String();
-	friend ostream& operator<<(ostream& out, const cPasajero& pasajero);
+	friend ostream& operator<<(ostream& out, cPasajero& pasajero);
 };
 
 class cListaPasajeros {
@@ -75,5 +75,5 @@ public:
 
 	//metodos para imprimir
 	string to_String();
-	friend ostream& operator<<(ostream& out, const cListaPasajeros& lista_pasajeros);
+	friend ostream& operator<<(ostream& out, cListaPasajeros& lista_pasajeros);
 };

@@ -120,11 +120,11 @@ string cVuelo::to_String()
 	if (this->EstadoVuelo == delayed)
 		ss << "Estado del vuelo: delayed" << endl;
 	ss << "Avion: "<<this->Avion->getID();
-	ss << "Fecha de salida: " << this->FechaHora_Salida << endl;  //uso la sobrecarga de fecha
-	ss << "Fecha de llegada: " << this->FechaHora_Llegada << endl;
-	ss << "Destino: " << this->Destino;
-	ss << "PASAJEROS DEL VUELO " << endl;
-	ss << this->Pasajeros;  
+	ss << "Fecha de salida: " << (*(this->FechaHora_Salida)) << endl;  //uso la sobrecarga de fecha
+	ss << "Fecha de llegada: " << (*(this->FechaHora_Llegada)) << endl;
+	ss << "Destino: " << this->Destino << endl;
+	ss << "-----PASAJEROS DEL VUELO----- " << endl;
+	ss << (*(this->Pasajeros));  
 
 	return ss.str();
 }
@@ -175,7 +175,7 @@ string cListaVuelos::to_String()
 {
 	stringstream ss;
 	ss << "Cantidad de vuelos: " << this->cant_act << endl;
-	ss << "VUELOS" << endl;
+	ss << "------VUELOS------" << endl;
 	for (int i = 0; i < this->cant_act; i++)
 		ss << this->VectorVuelos[i]->to_String();
 	return ss.str();

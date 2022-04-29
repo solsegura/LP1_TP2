@@ -50,7 +50,6 @@ void cListaEquipaje::AgregarValija(cEquipaje* valija_nueva)
 	if (this->cant_act < this->tam) { //tam= max
 		this->Vector_Equipaje[cant_act] = valija_nueva;
 		this->cant_act++;
-		cout << to_string(this->cant_act)<<endl;
 	}
 	if (this->SumarPeso() > 25) {   //chequeamos que al agregar la valija no se pase del peso maximo
 		this->EliminarValija(valija_nueva);

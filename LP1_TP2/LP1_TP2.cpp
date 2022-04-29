@@ -114,7 +114,7 @@ int main()
 	system("cls");
 
 	cout << "--------AEROPUERTO--------" << endl << endl;
-	cout << Aeroparque;
+	cout << (*Aeroparque);
 	system("pause");
 	system("cls");
 
