@@ -60,14 +60,35 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	int getCapacidad();
-
+	/// <summary>
+	/// agrega el pasajero que recibe por parametro a la lista de pasajeros
+	/// </summary>
+	/// <param name="pasajero_nuevo"></param>
 	void AgregarPasajero(cPasajero* pasajero_nuevo);
+	/// <summary>
+	/// agrega el avion que recibe por parametro a la lista de aviones
+	/// </summary>
+	/// <param name="avion_nuevo"></param>
 	void AgregarAvion(cAvion* avion_nuevo);  //la usamos para agregar aviones que creamos en el main, despues se eliminan al despegar
+	/// <summary>
+	/// Agrega el vuelo que recibe por parametro a la lista de vuelos
+	/// </summary>
+	/// <param name="vuelo_nuevo"></param>
 	void AgregarVuelo(cVuelo* vuelo_nuevo);
+	/// <summary>
+	/// devuelve la lista de vuelos
+	/// </summary>
+	/// <returns></returns>
 	cListaVuelos* GetListaVuelos();
-	friend ostream& operator<<(ostream& out, const cAeropuerto& aeropuerto);
+	/// <summary>
+	/// concatena los atributos de la clase en un string
+	/// </summary>
+	/// <returns></returns>
 	string to_String();
-
+	/// <summary>
+	/// Devuelve el porcentaje de vuelos que despegaron/aterrizaron en horario
+	/// </summary>
+	/// <returns></returns>
 	float PorcentajeEnHorario();
-
+	friend ostream& operator<<(ostream& out, const cAeropuerto& aeropuerto);
 };

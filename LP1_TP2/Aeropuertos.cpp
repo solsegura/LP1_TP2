@@ -16,8 +16,8 @@ cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPa
 
 cAeropuerto::~cAeropuerto()
 {
-	delete this->Lista_aviones;
-	delete this->Lista_vuelos;
+	//delete this->Lista_aviones;  //estoy probando hacer los deletes en el main porque si lo hago aca se pierde todo lo de las listas y quiero llorar
+	//delete this->Lista_vuelos;
 }
 
 void cAeropuerto::DarPermisoDespegue(cAvion* avion)

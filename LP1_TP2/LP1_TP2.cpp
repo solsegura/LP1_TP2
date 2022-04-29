@@ -6,6 +6,15 @@
 #include "cFecha.h"
 #define MAX_PERSONAS 50
 
+/*PROBLEMA: al crear las listas del aeropuerto en el constructor de aeropuerto,
+se pierden los datos cuando vuelve al main (entra al destructor y hace delete)
+
+Lo que se me ocurre: poner manualmente todos los deletes en el main en vez de en cada destructor. 
+Creo que esto puede traer lios en algun lado igual
+
+
+*/
+
 using namespace std;
 
 string lista_destino[5] = { "Jujuy","Cordoba", "Ushuaia", "Mendoza","Aeroparque" };
@@ -14,8 +23,7 @@ int main()
 {
 	cListaPasajeros* ListaPasajeros = new cListaPasajeros(MAX_PERSONAS);
 	cAeropuerto* Aeroparque = new cAeropuerto("Aeroparque", 25, 30, ListaPasajeros);
-	cAeropuerto* Jujuy = new cAeropuerto("Jujuy", 25, 30, ListaPasajeros);
-	cAeropuerto* Cordoba = new cAeropuerto("Cordoba", 25, 30, ListaPasajeros);
+	
 
 	cFecha* Dia1 = new cFecha(1, 4, 2022);
 	cFecha* Dia2 = new cFecha(2, 4, 2022);
@@ -70,11 +78,11 @@ int main()
 	Aeroparque->AgregarAvion(Avion1);
 	Aeroparque->AgregarAvion(Avion2);
 
-	cVuelo* Vuelo1 = new cVuelo(on_time, Avion1, Dia1, Dia1, lista_destino[0], partida); //problema con el enum de estado
+	cVuelo* Vuelo1 = new cVuelo(on_time, Avion1, Dia1, Dia1, lista_destino[0], partida); 
 	cVuelo* Vuelo2 = new cVuelo(delayed, Avion2, Dia1, Dia2, lista_destino[1], partida);
 	cVuelo* Vuelo3 = new cVuelo(on_time, Avion1, Dia2, Dia3, lista_destino[4], arribo);
 
-	Aeroparque->AgregarVuelo(Vuelo1);
+	Aeroparque->AgregarVuelo(Vuelo1);  //agregamos los vuelos a la lista de vuelos del aeropuerto
 	Aeroparque->AgregarVuelo(Vuelo2);
 	Aeroparque->AgregarVuelo(Vuelo3);
 
@@ -98,5 +106,43 @@ int main()
 	system("pause");
 	system("cls");
 
+
+
+
+	//DELETES
+	delete Aeroparque->GetListaVuelos();  //ni idea, pruebo borrar aca en vez de en el destructor
+
 	
+	delete ListaPasajeros;
+	delete Aeroparque;
+	delete Dia1;
+	delete Dia2;
+	delete Dia3;
+	delete Dia4;
+	delete Dia5;
+	delete Nacimiento1;
+	delete Nacimiento2;
+	delete Nacimiento3;
+	delete Nacimiento4;
+	delete Nacimiento5;
+	delete Valija1;
+	delete Valija2;
+	delete Valija3;
+	delete Valija4;
+	delete Pasajero1;
+	delete Pasajero2;
+	delete Pasajero3;
+	delete Pasajero4;
+	delete Pasajero5;
+	delete Avion1;
+	delete Avion2;
+	delete Vuelo1;
+	delete Vuelo2;
+	delete Vuelo3;
+
+
+
+
+
+
 }
