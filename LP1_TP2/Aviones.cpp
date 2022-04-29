@@ -14,7 +14,7 @@ cAvion::cAvion(string id, int cantmax)
 	this->PesoAct=0;
 	this->PesoMax = this->CantPasajerosMax * 75 + this->CantPasajerosMax * 25 + 4 * 75; //calculamos el pesomax del avion sumando el peso promedio de las personas y el maximo peso posible del equipaje
 	this->Permiso = false;
-	this->Estado = en_tierra;
+	this->Estado = estadoAvion::en_tierra;
 }
 
 cAvion::~cAvion()

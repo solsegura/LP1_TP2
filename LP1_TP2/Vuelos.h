@@ -75,3 +75,4 @@ public:
 	string to_String();
 	friend ostream& operator<<(ostream& out, cListaVuelos& vuelo);
 };
+

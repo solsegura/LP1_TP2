@@ -9,14 +9,6 @@
 #define MAX_VUELOS 10
 #define MAX_VALIJAS 5
 
-/*PROBLEMA: al crear las listas del aeropuerto en el constructor de aeropuerto,
-se pierden los datos cuando vuelve al main (entra al destructor y hace delete)
-
-Lo que se me ocurre: poner manualmente todos los deletes en el main en vez de en cada destructor. 
-Creo que esto puede traer lios en algun lado igual
-
-
-*/
 
 using namespace std;
 
@@ -63,7 +55,7 @@ int main()
 	cPasajero* Pasajero5 = new cPasajero("12334554", "Martina", Nacimiento5, 1, 28, ListaE5);
 
 
-	
+	//try catch, throw si ya esta en la lista
 	Aeroparque->AgregarPasajero(Pasajero1);
 	Aeroparque->AgregarPasajero(Pasajero2);
 	Aeroparque->AgregarPasajero(Pasajero3);
@@ -73,10 +65,10 @@ int main()
 	
 	
 	*Pasajero1 + *Valija1;  //los pasajeros agregan su equipaje
-	*Pasajero1 + *Valija1;  //entre estas lineas se rompe listaEquipaje de los pasajeros entrando al destructor de pasajero
-	*Pasajero2 + *Valija4; //cambiar con sobrecarga
-	*Pasajero2 + *Valija2;  //fiorella tiene solo una valija, por que cant actual de lista_valijas es 2?
-	*Pasajero3 + *Valija1;
+	*Pasajero1 + *Valija1;  
+	*Pasajero2 + *Valija4; 
+	*Pasajero2 + *Valija2;  
+	*Pasajero3 + *Valija1; 
 	*Pasajero3 + *Valija2;
 	*Pasajero3 + *Valija3;
 	*Pasajero4 + *Valija2;

@@ -41,7 +41,10 @@ public:
 	cPasajero operator-(cEquipaje& valija);
 	string to_String();
 	friend ostream& operator<<(ostream& out, cPasajero& pasajero);
+
 };
+
+
 
 class cListaPasajeros {
 	friend class cAeropuerto;
