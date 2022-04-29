@@ -5,6 +5,9 @@
 #include "Valijas.h"
 #include "cFecha.h"
 #define MAX_PERSONAS 50
+#define MAX_AVIONES 10
+#define MAX_VUELOS 10
+#define MAX_VALIJAS 5
 
 /*PROBLEMA: al crear las listas del aeropuerto en el constructor de aeropuerto,
 se pierden los datos cuando vuelve al main (entra al destructor y hace delete)
@@ -22,7 +25,10 @@ string lista_destino[5] = { "Jujuy","Cordoba", "Ushuaia", "Mendoza","Aeroparque"
 int main()
 {
 	cListaPasajeros* ListaPasajeros = new cListaPasajeros(MAX_PERSONAS);
-	cAeropuerto* Aeroparque = new cAeropuerto("Aeroparque", 25, 30, ListaPasajeros);
+	cListaAviones* ListaAviones = new cListaAviones(MAX_AVIONES);
+	cListaVuelos* ListaVuelos = new cListaVuelos(MAX_VUELOS);
+
+	cAeropuerto* Aeroparque = new cAeropuerto("Aeroparque", 25, 30, ListaPasajeros, ListaAviones,ListaVuelos);
 	
 
 	cFecha* Dia1 = new cFecha(1, 4, 2022);
@@ -38,17 +44,23 @@ int main()
 	cFecha* Nacimiento5 = new cFecha(22, 11, 2000);
 
 
+	cListaEquipaje* ListaE1 = new cListaEquipaje(MAX_VALIJAS);
+	cListaEquipaje* ListaE2 = new cListaEquipaje(MAX_VALIJAS);
+	cListaEquipaje* ListaE3 = new cListaEquipaje(MAX_VALIJAS);
+	cListaEquipaje* ListaE4 = new cListaEquipaje(MAX_VALIJAS);
+	cListaEquipaje* ListaE5 = new cListaEquipaje(MAX_VALIJAS);
+
 
 	cEquipaje* Valija1 = new cEquipaje("Bolso", 12);  //creamos algunos objetos de equipaje
 	cEquipaje* Valija2 = new cEquipaje("Mochila", 7);
 	cEquipaje* Valija3 = new cEquipaje("Valija", 17);
 	cEquipaje* Valija4 = new cEquipaje("Bolso grande", 25);
 
-	cPasajero* Pasajero1 = new cPasajero("23627615", "Sol", Nacimiento1, 1, 24, 2);  //creamos pasajeros
-	cPasajero* Pasajero2 = new cPasajero("34556776", "Fiorella", Nacimiento2, 2, 25, 2);
-	cPasajero* Pasajero3 = new cPasajero("21345673", "Rosario", Nacimiento3, 1, 26, 3);
-	cPasajero* Pasajero4 = new cPasajero("12345678", "Valentina", Nacimiento4, 3, 27, 2);
-	cPasajero* Pasajero5 = new cPasajero("12334554", "Martina", Nacimiento5, 1, 28, 1);
+	cPasajero* Pasajero1 = new cPasajero("23627615", "Sol", Nacimiento1, 1, 24, ListaE1);  //creamos pasajeros
+	cPasajero* Pasajero2 = new cPasajero("34556776", "Fiorella", Nacimiento2, 2, 25, ListaE2);
+	cPasajero* Pasajero3 = new cPasajero("21345673", "Rosario", Nacimiento3, 1, 26, ListaE3);
+	cPasajero* Pasajero4 = new cPasajero("12345678", "Valentina", Nacimiento4, 3, 27, ListaE4);
+	cPasajero* Pasajero5 = new cPasajero("12334554", "Martina", Nacimiento5, 1, 28, ListaE5);
 
 
 	
@@ -63,7 +75,7 @@ int main()
 	*Pasajero1 + *Valija1;  //los pasajeros agregan su equipaje
 	*Pasajero1 + *Valija1;  //entre estas lineas se rompe listaEquipaje de los pasajeros entrando al destructor de pasajero
 	*Pasajero2 + *Valija4; //cambiar con sobrecarga
-	*Pasajero2 + *Valija2;
+	*Pasajero2 + *Valija2;  //fiorella tiene solo una valija, por que cant actual de lista_valijas es 2?
 	*Pasajero3 + *Valija1;
 	*Pasajero3 + *Valija2;
 	*Pasajero3 + *Valija3;
@@ -110,10 +122,9 @@ int main()
 
 
 	//DELETES
-	delete Aeroparque->GetListaVuelos();  //ni idea, pruebo borrar aca en vez de en el destructor
-
-	
 	delete ListaPasajeros;
+	delete ListaVuelos;
+	delete ListaAviones;
 	delete Aeroparque;
 	delete Dia1;
 	delete Dia2;
@@ -129,6 +140,11 @@ int main()
 	delete Valija2;
 	delete Valija3;
 	delete Valija4;
+	delete ListaE1;
+	delete ListaE2;
+	delete ListaE3;
+	delete ListaE4;
+	delete ListaE5;
 	delete Pasajero1;
 	delete Pasajero2;
 	delete Pasajero3;

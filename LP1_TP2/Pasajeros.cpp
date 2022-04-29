@@ -5,19 +5,20 @@
 #include "Valijas.h"
 #include "cFecha.h"
 
-cPasajero::cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int asiento, int cant_valijas)
+cPasajero::cPasajero(string dni, string nombre, cFecha* fecha, int nvuelo, int asiento, cListaEquipaje* lista_equipaje)
 {
 	this->DNI = dni;
 	this->Nombre = nombre;
 	this->Nvuelo = nvuelo;
 	this->Asiento = asiento;
-	this->ListaValijas = new cListaEquipaje(cant_valijas);
+	this->ListaValijas = lista_equipaje;
 	this->Fecha = fecha;
 }
 
+
 cPasajero::~cPasajero()
 {
-	delete this->ListaValijas;
+
 }
 
 void cPasajero::AgregarEquipaje(cEquipaje* valija_nueva)

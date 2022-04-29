@@ -5,19 +5,18 @@
 #include "Valijas.h"
 #include "cFecha.h"
 
-cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPasajeros* lista_pasajeros)
+cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPasajeros* lista_pasajeros, cListaAviones* lista_aviones, cListaVuelos* lista_vuelos)
 {
 	this->ID = id;
 	this->Capacidad = capacidad;
 	this->Lista_pasajeros = lista_pasajeros;
-	this->Lista_aviones = new cListaAviones(capacidad);  //preguntar donde irian los deletes
-	this->Lista_vuelos = new cListaVuelos(cant_vuelos_max);
+	this->Lista_aviones = lista_aviones;  
+	this->Lista_vuelos = lista_vuelos;
 }
 
 cAeropuerto::~cAeropuerto()
 {
-	//delete this->Lista_aviones;  //estoy probando hacer los deletes en el main porque si lo hago aca se pierde todo lo de las listas y quiero llorar
-	//delete this->Lista_vuelos;
+	
 }
 
 void cAeropuerto::DarPermisoDespegue(cAvion* avion)

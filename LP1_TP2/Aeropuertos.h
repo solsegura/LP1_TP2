@@ -29,7 +29,7 @@ public:
 	/// <param name="capacidad"></param>
 	/// <param name="cant_vuelos_max"></param>
 	/// <param name="lista_pasajeros"></param>
-	cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPasajeros* lista_pasajeros);
+	cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPasajeros* lista_pasajeros, cListaAviones* lista_aviones, cListaVuelos* lista_vuelos);
 	///Destructor de cAeropuerto
 	~cAeropuerto();
 
