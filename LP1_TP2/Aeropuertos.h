@@ -15,6 +15,7 @@ class cListaVuelos;
 class cListaPasajeros;
 class cFecha;
 
+
 class cAeropuerto {
 	string ID;
 	int Capacidad; //De aviones

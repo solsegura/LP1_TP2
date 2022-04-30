@@ -4,6 +4,11 @@
 #include "Vuelos.h"
 #include "Valijas.h"
 #include "cFecha.h"
+#include "cListaPasajero.h"
+#include "cListaEquipaje.h"
+#include "cListaAviones.h"
+#include "cListaVuelos.h"
+
 
 cAeropuerto::cAeropuerto(string id, int capacidad, int cant_vuelos_max, cListaPasajeros* lista_pasajeros, cListaAviones* lista_aviones, cListaVuelos* lista_vuelos)
 {

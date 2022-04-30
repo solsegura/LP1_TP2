@@ -4,6 +4,11 @@
 #include "Vuelos.h"
 #include "Valijas.h"
 #include "cFecha.h"
+#include "cListaEquipaje.h"
+#include "cListaPasajero.h"
+#include "cListaAviones.h"
+#include "cListaVuelos.h"
+
 #define MAX_PERSONAS 50
 #define MAX_AVIONES 10
 #define MAX_VUELOS 10
@@ -110,8 +115,20 @@ int main()
 	system("pause");
 	system("cls");
 
-	cout << "P" << to_string(Aeroparque->PorcentajeEnHorario());
+	cout << "---------ESTADISTICAS DE AEROPARQUE------------" << endl;
+	cout << "Porcentaje de vuelos en horario:" << to_string(Aeroparque->PorcentajeEnHorario()) << endl;
 
+	cout << "Cantidad de pasajeros que volaron el dia: " << *Dia1 << to_string(Aeroparque->CantVuelosDia(Dia1)) << endl;
+	cout << "Cantidad de pasajeros que volaron el dia: " << *Dia2 << to_string(Aeroparque->CantVuelosDia(Dia2)) << endl;
+	cout << "Cantidad de pasajeros que volaron el dia: " << *Dia3 << to_string(Aeroparque->CantVuelosDia(Dia3)) << endl;
+	cout << "Cantidad de pasajeros que volaron el dia: " << *Dia4 << to_string(Aeroparque->CantVuelosDia(Dia4)) << endl;
+	cout << "Cantidad de pasajeros que volaron el dia: " << *Dia5 << to_string(Aeroparque->CantVuelosDia(Dia5)) << endl;
+
+	cout << "Cantidad de vuelos que aterrizaron y despegaron en el dia: " << *Dia1 << to_string(Aeroparque->FiltrarDia(Dia1)) << endl;
+	cout << "Cantidad de vuelos que aterrizaron y despegaron en el dia: " << *Dia2 << to_string(Aeroparque->FiltrarDia(Dia2)) << endl;
+	cout << "Cantidad de vuelos que aterrizaron y despegaron en el dia: " << *Dia3 << to_string(Aeroparque->FiltrarDia(Dia3)) << endl;
+	cout << "Cantidad de vuelos que aterrizaron y despegaron en el dia: " << *Dia4 << to_string(Aeroparque->FiltrarDia(Dia4)) << endl;
+	cout << "Cantidad de vuelos que aterrizaron y despegaron en el dia: " << *Dia5 << to_string(Aeroparque->FiltrarDia(Dia5)) << endl;
 
 	//DELETES
 	delete ListaPasajeros;
