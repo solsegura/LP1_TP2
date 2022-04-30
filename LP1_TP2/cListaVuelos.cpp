@@ -29,7 +29,6 @@ cListaVuelos::~cListaVuelos()
 
 
 
-
 int cListaVuelos::getCantAct()
 {
 	return 0;
@@ -61,10 +60,13 @@ string cListaVuelos::to_String()
 
 void cListaVuelos::AgregarVuelo(cVuelo* vuelo)
 {
-	if (this->cant_act < this->tam)
+
+	if (this->cant_act < this->tam)   //me fijo que haya lugar en la lista
 	{
-		this->VectorVuelos[cant_act] = vuelo;
-		cant_act++;
+		if (this->Buscar(vuelo) == -1) { //si no esta en la lista, lo agrego
+			this->VectorVuelos[cant_act] = vuelo;
+			cant_act++;
+		}
 	}
 
 }

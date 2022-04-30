@@ -84,42 +84,30 @@ cListaPasajeros* cListaPasajeros::FiltrarLista(int vuelo)
 	return filtro;
 }
 
-/*cListaPasajeros* cListaPasajeros::FiltrarDia(string dia)
-{
-	cListaPasajeros* filtroDia = new cListaPasajeros(this->cant_act); //lista filtrodia tam. cant act
-	for (int i = 0; i < this->cant_act; i++)
-	{
-		if (Vector_Pasajeros[i]->getFecha() == dia)
-			filtroDia->AgregarPasajero(Vector_Pasajeros[i]);
-	}
-	return filtroDia;
-}*/
-
-
-//
-//void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
-//{
-//	if (this->cant_act < this->tam)  //me fijo que haya espacion en la lista
-//	{
-//		if (this->Buscar(pasajero) == -1) {  //me fijo que el pasajero no este en la lista
-//			cout << "pepe";
-//			this->Vector_Pasajeros[cant_act] = pasajero;
-//			cant_act++;
-//		}
-//	}
-//}
 
 void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
 {
-	for (unsigned int i = 0; i < this->tam; i++) {
-		if (this->Vector_Pasajeros[i] == NULL) {
-			this->Vector_Pasajeros[i] = pasajero;
+	if (this->cant_act < this->tam)  //me fijo que haya espacion en la lista
+	{
+		if (this->Buscar(pasajero) == -1) {  //me fijo que el pasajero no este en la lista
+		
+			this->Vector_Pasajeros[cant_act] = pasajero;
 			cant_act++;
-			return;
 		}
 	}
-
 }
+
+//void cListaPasajeros::AgregarPasajero(cPasajero* pasajero)
+//{
+//	for (unsigned int i = 0; i < this->tam; i++) {
+//		if (this->Vector_Pasajeros[i] == NULL) {
+//			this->Vector_Pasajeros[i] = pasajero;
+//			cant_act++;
+//			return;
+//		}
+//	}
+//
+//}
 
 void cListaPasajeros::EliminarPasajero(cPasajero* pasajero)
 {

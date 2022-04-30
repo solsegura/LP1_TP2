@@ -82,10 +82,12 @@ void cListaAviones::EliminarAvion(cAvion* avion)
 void cListaAviones::AgregarAvion(cAvion* avion)
 {
 
-	if (this->cant_act < this->tam)
+	if (this->cant_act < this->tam)  //veo que haya lugar en la lista
 	{
-		this->VectorAviones[cant_act] = avion;
-		cant_act++;
+		if (this->Buscar(avion) == -1) {  //si no esta en la lista, lo agrego
+			this->VectorAviones[cant_act] = avion;
+			cant_act++;
+		}
 	}
 }
 int cListaAviones::Buscar(cAvion* avion)
